@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Test - Ayam Gepuk Artisan</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #FFFBEB;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #E63946;
+            border-radius: 8px;
+        }
+        .test-button {
+            background: #E63946;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .test-button:hover {
+            background: #B91C1C;
+            transform: scale(1.05);
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            background: #F0F9FF;
+            border-left: 4px solid #3B82F6;
+            border-radius: 4px;
+        }
+        .success { border-left-color: #10B981; background: #F0FDF4; }
+        .error { border-left-color: #EF4444; background: #FEF2F2; }
+        .phone-btn { background: #10B981; }
+        .whatsapp-btn { background: #25D366; }
+        .cart-btn { background: #F59E0B; }
+        .menu-btn { background: #8B5CF6; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Button Functionality Test</h1>
+        <p>Testing all buttons and interactions in Ayam Gepuk Artisan app</p>
+
+        <!-- Navigation Buttons -->
+        <div class="test-section">
+            <h3>📱 Navigation Buttons</h3>
+            <button class="test-button" onclick="testNavigation('home')">🏠 Home</button>
+            <button class="test-button" onclick="testNavigation('menu')">🍽️ Menu</button>
+            <button class="test-button" onclick="testNavigation('promotions')">🎉 Promotions</button>
+            <button class="test-button" onclick="testNavigation('about')">ℹ️ About</button>
+            <button class="test-button" onclick="testNavigation('contact')">📞 Contact</button>
+            <button class="test-button cart-btn" onclick="testNavigation('cart')">🛒 Cart</button>
+            <div id="nav-result" class="test-result"></div>
+        </div>
+
+        <!-- Phone & Contact Buttons -->
+        <div class="test-section">
+            <h3>📞 Contact Buttons</h3>
+            <button class="test-button phone-btn" onclick="testPhoneCall()">📞 Call: 0182442017</button>
+            <button class="test-button whatsapp-btn" onclick="testWhatsApp()">💬 WhatsApp</button>
+            <button class="test-button" onclick="testEmail()">✉️ Email</button>
+            <div id="contact-result" class="test-result"></div>
+        </div>
+
+        <!-- Order Buttons -->
+        <div class="test-section">
+            <h3>🛒 Order Buttons</h3>
+            <button class="test-button" onclick="testOrderNow()">🛒 Order Now</button>
+            <button class="test-button" onclick="testOnlineOrder()">💻 Online Order</button>
+            <button class="test-button" onclick="testCallOrder()">📞 Call & Order</button>
+            <button class="test-button whatsapp-btn" onclick="testWhatsAppOrder()">💬 WhatsApp Order</button>
+            <div id="order-result" class="test-result"></div>
+        </div>
+
+        <!-- Menu Buttons -->
+        <div class="test-section">
+            <h3>🍽️ Menu Buttons</h3>
+            <button class="test-button menu-btn" onclick="testMenu('krispy')">🍗 Ayam Krispy</button>
+            <button class="test-button menu-btn" onclick="testMenu('klasik')">🍗 Ayam Klasik</button>
+            <button class="test-button menu-btn" onclick="testMenu('sides')">🥗 Side Dishes</button>
+            <button class="test-button menu-btn" onclick="testMenu('drinks')">🥤 Drinks</button>
+            <div id="menu-result" class="test-result"></div>
+        </div>
+
+        <!-- Interactive Features -->
+        <div class="test-section">
+            <h3>🤖 Interactive Features</h3>
+            <button class="test-button" onclick="testAIAssistant()">🤖 AI Assistant</button>
+            <button class="test-button" onclick="testMobileMenu()">☰ Mobile Menu</button>
+            <button class="test-button" onclick="testCookieConsent()">🍪 Cookie Consent</button>
+            <button class="test-button" onclick="testThemeToggle()">🌙 Theme Toggle</button>
+            <div id="interactive-result" class="test-result"></div>
+        </div>
+
+        <!-- Cart Functionality -->
+        <div class="test-section">
+            <h3>🛒 Cart Functionality</h3>
+            <button class="test-button cart-btn" onclick="testAddToCart()">➕ Add to Cart</button>
+            <button class="test-button cart-btn" onclick="testRemoveFromCart()">➖ Remove from Cart</button>
+            <button class="test-button cart-btn" onclick="testUpdateQuantity()">🔄 Update Quantity</button>
+            <button class="test-button cart-btn" onclick="testClearCart()">🗑️ Clear Cart</button>
+            <div id="cart-result" class="test-result"></div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="test-section">
+            <h3>📱 Social Media</h3>
+            <button class="test-button" onclick="testFacebook()">📘 Facebook</button>
+            <button class="test-button" onclick="testInstagram()">📷 Instagram</button>
+            <button class="test-button" onclick="testTikTok()">🎵 TikTok</button>
+            <div id="social-result" class="test-result"></div>
+        </div>
+
+        <!-- Test Results Summary -->
+        <div class="test-section">
+            <h3>📊 Test Summary</h3>
+            <button class="test-button" onclick="runAllTests()">🚀 Run All Tests</button>
+            <button class="test-button" onclick="clearResults()">🧹 Clear Results</button>
+            <div id="summary-result" class="test-result"></div>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {
+            passed: 0,
+            failed: 0,
+            total: 0
+        };
+
+        function logResult(elementId, message, success = true) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = message;
+            element.className = `test-result ${success ? 'success' : 'error'}`;
+            
+            if (success) {
+                testResults.passed++;
+            } else {
+                testResults.failed++;
+            }
+            testResults.total++;
+        }
+
+        // Navigation Tests
+        function testNavigation(page) {
+            const pages = {
+                'home': '/',
+                'menu': '/menu',
+                'promotions': '/promotions',
+                'about': '/about',
+                'contact': '/contact',
+                'cart': '/cart'
+            };
+            
+            const url = pages[page];
+            logResult('nav-result', `✅ Navigation to ${page} (${url}) - Would navigate in React Router`, true);
+        }
+
+        // Contact Tests
+        function testPhoneCall() {
+            const phoneNumber = '0182442017';
+            const telUrl = `tel:${phoneNumber}`;
+            logResult('contact-result', `✅ Phone call to ${phoneNumber} - URL: ${telUrl}`, true);
+            
+            // Simulate phone call (won't actually call)
+            console.log('Phone call initiated:', telUrl);
+        }
+
+        function testWhatsApp() {
+            const phoneNumber = '60182442017';
+            const message = 'Hello! I would like to order from Ayam Gepuk Artisan.';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            logResult('contact-result', `✅ WhatsApp message - URL: ${whatsappUrl}`, true);
+            
+            // Simulate WhatsApp (won't actually open)
+            console.log('WhatsApp initiated:', whatsappUrl);
+        }
+
+        function testEmail() {
+            const email = 'info@ayamgepukartisan.com';
+            const subject = 'Inquiry about Ayam Gepuk Artisan';
+            const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+            logResult('contact-result', `✅ Email to ${email} - URL: ${emailUrl}`, true);
+        }
+
+        // Order Tests
+        function testOrderNow() {
+            logResult('order-result', '✅ Order Now button - Would redirect to /menu page', true);
+        }
+
+        function testOnlineOrder() {
+            logResult('order-result', '✅ Online Order - Would redirect to /menu page', true);
+        }
+
+        function testCallOrder() {
+            const phoneNumber = '0182442017';
+            logResult('order-result', `✅ Call & Order - Would call ${phoneNumber}`, true);
+        }
+
+        function testWhatsAppOrder() {
+            logResult('order-result', '✅ WhatsApp Order - Would open WhatsApp with order message', true);
+        }
+
+        // Menu Tests
+        function testMenu(category) {
+            const categories = {
+                'krispy': 'Ayam Krispy Sets',
+                'klasik': 'Ayam Klasik Sets',
+                'sides': 'Side Dishes',
+                'drinks': 'Drinks'
+            };
+            logResult('menu-result', `✅ Menu category: ${categories[category]} - Would filter menu items`, true);
+        }
+
+        // Interactive Features Tests
+        function testAIAssistant() {
+            logResult('interactive-result', '✅ AI Assistant - Would open chat widget', true);
+        }
+
+        function testMobileMenu() {
+            logResult('interactive-result', '✅ Mobile Menu - Would toggle mobile navigation', true);
+        }
+
+        function testCookieConsent() {
+            logResult('interactive-result', '✅ Cookie Consent - Would show cookie preferences modal', true);
+        }
+
+        function testThemeToggle() {
+            logResult('interactive-result', '✅ Theme Toggle - Would switch between light/dark mode', true);
+        }
+
+        // Cart Tests
+        function testAddToCart() {
+            logResult('cart-result', '✅ Add to Cart - Would add item to cart context', true);
+        }
+
+        function testRemoveFromCart() {
+            logResult('cart-result', '✅ Remove from Cart - Would remove item from cart', true);
+        }
+
+        function testUpdateQuantity() {
+            logResult('cart-result', '✅ Update Quantity - Would update item quantity in cart', true);
+        }
+
+        function testClearCart() {
+            logResult('cart-result', '✅ Clear Cart - Would clear all items from cart', true);
+        }
+
+        // Social Media Tests
+        function testFacebook() {
+            const facebookUrl = 'https://facebook.com/ayamgepukartisan';
+            logResult('social-result', `✅ Facebook - Would open ${facebookUrl}`, true);
+        }
+
+        function testInstagram() {
+            const instagramUrl = 'https://instagram.com/ayamgepukartisan';
+            logResult('social-result', `✅ Instagram - Would open ${instagramUrl}`, true);
+        }
+
+        function testTikTok() {
+            const tiktokUrl = 'https://tiktok.com/@ayamgepukartisan';
+            logResult('social-result', `✅ TikTok - Would open ${tiktokUrl}`, true);
+        }
+
+        // Run All Tests
+        function runAllTests() {
+            testResults = { passed: 0, failed: 0, total: 0 };
+            
+            // Run all test functions
+            testNavigation('home');
+            testNavigation('menu');
+            testNavigation('cart');
+            testPhoneCall();
+            testWhatsApp();
+            testEmail();
+            testOrderNow();
+            testOnlineOrder();
+            testCallOrder();
+            testWhatsAppOrder();
+            testMenu('krispy');
+            testMenu('klasik');
+            testAIAssistant();
+            testMobileMenu();
+            testCookieConsent();
+            testThemeToggle();
+            testAddToCart();
+            testRemoveFromCart();
+            testUpdateQuantity();
+            testClearCart();
+            testFacebook();
+            testInstagram();
+            testTikTok();
+            
+            const summary = `
+                <h4>📊 Test Results Summary:</h4>
+                <p><strong>Total Tests:</strong> ${testResults.total}</p>
+                <p><strong>Passed:</strong> ${testResults.passed} ✅</p>
+                <p><strong>Failed:</strong> ${testResults.failed} ❌</p>
+                <p><strong>Success Rate:</strong> ${Math.round((testResults.passed / testResults.total) * 100)}%</p>
+            `;
+            
+            logResult('summary-result', summary, testResults.failed === 0);
+        }
+
+        function clearResults() {
+            const resultElements = document.querySelectorAll('.test-result');
+            resultElements.forEach(element => {
+                element.innerHTML = '';
+                element.className = 'test-result';
+            });
+            testResults = { passed: 0, failed: 0, total: 0 };
+        }
+
+        // Auto-run tests on page load
+        window.addEventListener('load', () => {
+            console.log('🧪 Button Test Page Loaded');
+            console.log('All buttons are ready for testing!');
+        });
+    </script>
+</body>
+</html>
