@@ -5,6 +5,7 @@ import AIAssistant from '../ai/AIAssistant';
 import OrderButton from '../ordering/OrderButton';
 import CookieConsent from '../privacy/CookieConsent';
 import { PerformanceMonitor } from '../../utils/performance';
+import ButtonTest from '../../test/ButtonTest';
 
 export function Layout() {
   return (
@@ -28,6 +29,7 @@ export function Layout() {
         }}
       />
       <PerformanceMonitor />
+      {process.env.NODE_ENV === 'development' && <ButtonTest />}
     </div>
   );
 }
