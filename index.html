@@ -1,96 +1,468 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayam Gepuk Artisan - Authentic Indonesian Cuisine | Premium Smashed Fried Chicken</title>
-  <meta name="description" content="Experience authentic Indonesian smashed fried chicken with traditional spices and sambal. Premium quality ingredients, fast delivery, and authentic taste. Order now for the best Ayam Gepuk in Malaysia!" />
-  <meta name="keywords" content="ayam gepuk, indonesian food, malaysia restaurant, authentic cuisine, fried chicken, sambal, indonesian restaurant, seremban food, halal restaurant" />
-  <meta name="author" content="Ayam Gepuk Artisan" />
-  <meta name="robots" content="index, follow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Ayam Gepuk Artisan - Authentic Indonesian Cuisine" />
-  <meta property="og:description" content="Experience authentic Indonesian smashed fried chicken with traditional spices and sambal. Premium quality ingredients and traditional cooking methods." />
-  <meta property="og:image" content="/og-image.jpg" />
-  <meta property="og:url" content="https://ayamgepukartisan.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Ayam Gepuk Artisan" />
-  <meta property="og:locale" content="en_MY" />
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ayam Gepuk Artisan - Authentic Indonesian Cuisine" />
-  <meta name="twitter:description" content="Experience authentic Indonesian smashed fried chicken with traditional spices and sambal." />
-  <meta name="twitter:image" content="/twitter-image.jpg" />
-  <meta name="twitter:site" content="@ayamgepukartisan" />
-
-  <!-- Additional SEO Meta Tags -->
-  <meta name="theme-color" content="#E63946" />
-  <meta name="msapplication-TileColor" content="#E63946" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Ayam Gepuk Artisan" />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Ayam Gepuk Artisan",
-    "description": "Authentic Indonesian smashed fried chicken restaurant serving traditional cuisine with premium ingredients.",
-    "url": "https://ayamgepukartisan.com",
-    "telephone": "0182442017",
-    "email": "info@ayamgepukartisan.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Seremban 2",
-      "addressLocality": "Seremban",
-      "addressRegion": "Negeri Sembilan",
-      "addressCountry": "MY"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "2.7297",
-      "longitude": "101.9382"
-    },
-    "openingHours": [
-      "Mo-Fr 10:00-22:00",
-      "Sa-Su 11:00-23:00"
-    ],
-    "servesCuisine": "Indonesian",
-    "priceRange": "$$",
-    "paymentAccepted": "Cash, Credit Card, Digital Wallet",
-    "currenciesAccepted": "MYR",
-    "hasMenu": "https://ayamgepukartisan.com/menu",
-    "acceptsReservations": true,
-    "image": "/restaurant-image.jpg",
-    "logo": "/logo.png",
-    "sameAs": [
-      "https://facebook.com/ayamgepukartisan",
-      "https://instagram.com/ayamgepukartisan"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "150"
-    }
-  }
-  </script>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayam Gepuk Artisan - Authentic Indonesian Cuisine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'yellow-gold': '#FFD700',
+                        'brand-black': '#1C1C1C',
+                        'brand-red': '#E63946',
+                    },
+                    fontFamily: {
+                        'heading': ['Poppins', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+                        'body': ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brand': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                        'brand-lg': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        'brand-xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .premium-card {
+            @apply bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s infinite;
+        }
+    </style>
 </head>
+<body class="bg-yellow-50 font-body">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-yellow-gold to-yellow-400 py-4 shadow-brand-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg animate-pulse-slow">
+                        <div class="w-12 h-12 bg-yellow-gold rounded-full flex items-center justify-center">
+                            <span class="text-brand-black font-bold text-lg">🐔</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-heading font-bold text-brand-black">AYAM GEPUK</h1>
+                        <p class="text-sm font-heading text-brand-red">ARTISAN</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors">Home</a>
+                    <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors">Menu</a>
+                    <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors">Promotions</a>
+                    <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors">About</a>
+                    <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors">Contact</a>
+                    <a href="tel:0182442017" class="text-brand-black hover:text-brand-red flex items-center gap-2 font-heading font-medium bg-white/20 px-4 py-2 rounded-xl hover:bg-white/30 transition-all duration-300">
+                        <span>📞</span>
+                        <span>0182442017</span>
+                    </a>
+                    <a href="#" class="relative text-brand-black hover:text-brand-red bg-white/20 p-3 rounded-xl hover:bg-white/30 transition-all duration-300">
+                        <span class="text-xl">🛒</span>
+                        <span class="absolute -top-2 -right-2 bg-gradient-to-r from-brand-red to-red-700 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center shadow-brand font-heading font-bold animate-bounce-slow">0</span>
+                    </a>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button class="text-brand-black bg-white/20 p-3 rounded-xl focus:outline-none hover:bg-white/30 transition-all duration-300" onclick="toggleMobileMenu()">
+                        <span class="text-xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/index.tsx"></script>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-brand-lg mt-4 mx-4">
+        <div class="flex flex-col space-y-4">
+            <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors py-3 px-4 rounded-xl hover:bg-yellow-gold/10">Home</a>
+            <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors py-3 px-4 rounded-xl hover:bg-yellow-gold/10">Menu</a>
+            <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors py-3 px-4 rounded-xl hover:bg-yellow-gold/10">Promotions</a>
+            <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors py-3 px-4 rounded-xl hover:bg-yellow-gold/10">About</a>
+            <a href="#" class="text-brand-black font-heading font-medium hover:text-brand-red transition-colors py-3 px-4 rounded-xl hover:bg-yellow-gold/10">Contact</a>
+            <a href="tel:0182442017" class="text-brand-black hover:text-brand-red flex items-center gap-3 font-heading font-medium py-3 px-4 rounded-xl bg-yellow-gold/20 hover:bg-yellow-gold/30 transition-all duration-300">
+                <span>📞</span>
+                <span>Call Us: 0182442017</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-yellow-gold via-yellow-400 to-yellow-500 py-24 px-4 overflow-hidden mt-16">
+        <div class="container mx-auto relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <div class="inline-block bg-red-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4 animate-pulse-slow">
+                        Premium Indonesian Cuisine
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-brand-black mb-6 leading-tight">
+                        Authentic{' '}
+                        <span class="text-brand-red underline decoration-yellow-gold decoration-4 underline-offset-4 animate-pulse-slow">
+                            Indonesian
+                        </span>{' '}
+                        Smashed Fried Chicken
+                    </h1>
+                    
+                    <p class="text-lg mb-8 text-brand-black/80 leading-relaxed font-body max-w-2xl mx-auto lg:mx-0">
+                        Experience the perfect blend of crispy texture and spicy flavor
+                        with our signature Ayam Gepuk dishes, crafted with traditional
+                        recipes and premium ingredients.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#" class="bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-2xl font-heading font-semibold text-lg shadow-brand-lg hover:shadow-brand-xl transition-all duration-300 flex items-center justify-center group transform hover:scale-105">
+                            <span class="mr-3 group-hover:scale-110 transition-transform duration-300">🛒</span>
+                            Order Now
+                        </a>
+                        
+                        <a href="tel:0182442017" class="bg-white hover:bg-gray-50 text-brand-black px-8 py-4 rounded-2xl font-heading font-semibold text-lg shadow-brand-lg hover:shadow-brand-xl transition-all duration-300 flex items-center justify-center group border-2 border-brand-black transform hover:scale-105">
+                            <span class="mr-3 group-hover:scale-110 transition-transform duration-300">📞</span>
+                            Call Us
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start mt-10">
+                        <div class="flex items-center bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl shadow-brand transform hover:scale-105 transition-all duration-300">
+                            <div class="bg-yellow-gold/20 p-3 rounded-xl mr-3">
+                                <span class="text-yellow-gold text-xl">⭐</span>
+                            </div>
+                            <span class="text-brand-black font-heading font-semibold">4.9 Rating</span>
+                        </div>
+                        <div class="flex items-center bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl shadow-brand transform hover:scale-105 transition-all duration-300">
+                            <div class="bg-brand-red/20 p-3 rounded-xl mr-3">
+                                <span class="text-brand-red text-xl">🚚</span>
+                            </div>
+                            <span class="text-brand-black font-heading font-semibold">Fast Delivery</span>
+                        </div>
+                        <div class="flex items-center bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl shadow-brand transform hover:scale-105 transition-all duration-300">
+                            <div class="bg-brand-red/20 p-3 rounded-xl mr-3">
+                                <span class="text-brand-red text-xl">🍽️</span>
+                            </div>
+                            <span class="text-brand-black font-heading font-semibold">Authentic Taste</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="relative bg-gradient-to-br from-yellow-gold to-yellow-400 rounded-3xl p-10 shadow-brand-xl max-w-sm transform hover:scale-105 transition-all duration-300">
+                            <div class="flex flex-col items-center mb-6">
+                                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg mb-4 animate-bounce-slow">
+                                    <span class="text-brand-black font-bold text-2xl">🐔</span>
+                                </div>
+                                <h2 class="text-brand-black font-bold text-2xl">AYAM GEPUK</h2>
+                                <h3 class="text-brand-red font-bold text-lg">ARTISAN</h3>
+                                <p class="text-brand-black text-sm">Rasa Ayam Gepuk Sebenar!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-brand-lg border-2 border-yellow-gold transform hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-yellow-gold/20 p-3 rounded-xl">
+                                    <span class="text-brand-red text-xl">🏆</span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-body">Certified</p>
+                                    <p class="text-sm font-heading font-bold text-brand-red">Halal Cuisine</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-red-600 mb-4">
+                    Why Choose Ayam Gepuk Artisan?
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    We bring the authentic taste of Indonesia to your table with our
+                    premium quality ingredients and traditional cooking methods.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="premium-card p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-br from-yellow-400 to-yellow-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-red-600 text-2xl">🌶️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600">Authentic Recipe</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Our recipes are crafted with traditional Indonesian spices and cooking techniques, passed down through generations for an authentic taste experience.
+                    </p>
+                </div>
+                
+                <div class="premium-card p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-br from-yellow-400 to-yellow-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-red-600 text-2xl">⚡</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600">Quick Service</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Fast preparation and delivery ensuring your food arrives hot and fresh, just as it should be. We value your time as much as we value quality.
+                    </p>
+                </div>
+                
+                <div class="premium-card p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="bg-gradient-to-br from-yellow-400 to-yellow-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-red-600 text-2xl">🥇</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600">Premium Ingredients</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We source only the highest quality ingredients, ensuring every dish meets our strict standards and delivers exceptional flavor in every bite.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Menu Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-red-100 text-red-700 px-4 py-1 rounded-full text-sm font-medium">
+                    Customer Favorites
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-red-600 mt-4 mb-4">
+                    Our Most Popular Dishes
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    Try our customer favorites, prepared with authentic Indonesian
+                    flavors and premium ingredients for a truly exceptional dining
+                    experience.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="premium-card overflow-hidden group transform hover:scale-105 transition-all duration-300">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="absolute top-4 right-4 bg-yellow-400 text-red-700 font-bold px-3 py-1 rounded-lg shadow-md z-10">
+                            RM 10.99
+                        </div>
+                        <div class="w-full h-full bg-gradient-to-br from-yellow-200 to-yellow-300 flex items-center justify-center">
+                            <span class="text-6xl">🍗</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-red-600 mb-2 group-hover:text-red-700 transition-colors">
+                            Ayam Krispy Set A
+                        </h3>
+                        <p class="text-gray-600 mb-6 line-clamp-2">
+                            Nasi putih, ayam krispy 1 pcs, sambal, kicap, sayuran
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="ml-2 text-sm text-gray-500">5.0</span>
+                            </div>
+                            
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors transform hover:scale-105">
+                                Order Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="premium-card overflow-hidden group transform hover:scale-105 transition-all duration-300">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="absolute top-4 right-4 bg-yellow-400 text-red-700 font-bold px-3 py-1 rounded-lg shadow-md z-10">
+                            RM 10.99
+                        </div>
+                        <div class="w-full h-full bg-gradient-to-br from-yellow-200 to-yellow-300 flex items-center justify-center">
+                            <span class="text-6xl">🍗</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-red-600 mb-2 group-hover:text-red-700 transition-colors">
+                            Ayam Klasik Set A
+                        </h3>
+                        <p class="text-gray-600 mb-6 line-clamp-2">
+                            Nasi putih, ayam klasik, tempe goreng, sambal, kicap, sayuran
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="ml-2 text-sm text-gray-500">5.0</span>
+                            </div>
+                            
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors transform hover:scale-105">
+                                Order Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="premium-card overflow-hidden group transform hover:scale-105 transition-all duration-300">
+                    <div class="relative h-60 overflow-hidden">
+                        <div class="absolute top-4 right-4 bg-yellow-400 text-red-700 font-bold px-3 py-1 rounded-lg shadow-md z-10">
+                            RM 8.99
+                        </div>
+                        <div class="w-full h-full bg-gradient-to-br from-yellow-200 to-yellow-300 flex items-center justify-center">
+                            <span class="text-6xl">🍗</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-red-600 mb-2 group-hover:text-red-700 transition-colors">
+                            Unlimited Refill Set
+                        </h3>
+                        <p class="text-gray-600 mb-6 line-clamp-2">
+                            Nasi, sambal, air, kicap - unlimited refill
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="ml-2 text-sm text-gray-500">5.0</span>
+                            </div>
+                            
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors transform hover:scale-105">
+                                Order Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#" class="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-red-700 font-bold px-10 py-4 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+                    Explore Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-brand-red to-red-700 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="h-16 w-16 mr-4 bg-yellow-400 rounded-2xl flex items-center justify-center shadow-lg">
+                            <span class="text-brand-black font-bold text-xl">🐔</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="text-2xl font-bold">AYAM GEPUK</h3>
+                            <h4 class="text-lg font-semibold text-yellow-300">ARTISAN</h4>
+                        </div>
+                    </div>
+                    <p class="mb-6 text-white/90 leading-relaxed">
+                        Authentic Indonesian smashed fried chicken with traditional spices
+                        and sambal. A taste of Indonesia in every bite.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110">📘</a>
+                        <a href="#" class="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110">📷</a>
+                        <a href="#" class="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110">🎵</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6 flex items-center">
+                        <span class="mr-2">🕒</span>
+                        Opening Hours
+                    </h4>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between">
+                            <span class="text-white/80">Monday - Friday</span>
+                            <span class="font-medium">10:00 AM - 10:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-white/80">Saturday - Sunday</span>
+                            <span class="font-medium">11:00 AM - 11:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-white/80">Public Holidays</span>
+                            <span class="font-medium">11:00 AM - 10:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="flex items-center hover:translate-x-2 transition-transform duration-300 group"><span class="mr-2 text-yellow-300 group-hover:text-yellow-200">→</span><span class="hover:text-yellow-300 transition-colors">Home</span></a></li>
+                        <li><a href="#" class="flex items-center hover:translate-x-2 transition-transform duration-300 group"><span class="mr-2 text-yellow-300 group-hover:text-yellow-200">→</span><span class="hover:text-yellow-300 transition-colors">Menu</span></a></li>
+                        <li><a href="#" class="flex items-center hover:translate-x-2 transition-transform duration-300 group"><span class="mr-2 text-yellow-300 group-hover:text-yellow-200">→</span><span class="hover:text-yellow-300 transition-colors">Cart</span></a></li>
+                        <li><a href="#" class="flex items-center hover:translate-x-2 transition-transform duration-300 group"><span class="mr-2 text-yellow-300 group-hover:text-yellow-200">→</span><span class="hover:text-yellow-300 transition-colors">About Us</span></a></li>
+                        <li><a href="#" class="flex items-center hover:translate-x-2 transition-transform duration-300 group"><span class="mr-2 text-yellow-300 group-hover:text-yellow-200">→</span><span class="hover:text-yellow-300 transition-colors">Contact</span></a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <div class="bg-white/10 p-2 rounded-lg mr-3 flex-shrink-0">
+                                <span>📍</span>
+                            </div>
+                            <span>Seremban 2, Negeri Sembilan, Malaysia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="bg-white/10 p-2 rounded-lg mr-3 flex-shrink-0">
+                                <span>📞</span>
+                            </div>
+                            <a href="tel:0182442017" class="hover:text-yellow-300 transition-colors">0182442017</a>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="bg-white/10 p-2 rounded-lg mr-3 flex-shrink-0">
+                                <span>✉️</span>
+                            </div>
+                            <a href="mailto:info@ayamgepukartisan.com" class="hover:text-yellow-300 transition-colors">info@ayamgepukartisan.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-12 pt-8 text-center">
+                <p class="flex items-center justify-center text-white/80">
+                    &copy; 2024 Ayam Gepuk Artisan. All rights reserved.
+                    <span class="inline-flex items-center ml-2">
+                        Made with <span class="mx-1 text-yellow-300">❤️</span> in Malaysia
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Order Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="#" class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center gap-2 transform hover:scale-105 animate-bounce-slow">
+            <span class="text-xl">🛒</span>
+            <span class="font-medium">Order Now</span>
+        </a>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+    </script>
 </body>
-
 </html>
