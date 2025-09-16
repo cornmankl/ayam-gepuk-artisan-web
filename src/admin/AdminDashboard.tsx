@@ -1,6 +1,6 @@
 import React from 'react';
-import { SettingsProvider } from '../contexts/SettingsContext';
-import SettingsPanel from '../components/SettingsPanel';
+import { SettingsProvider } from './contexts/SettingsContext';
+import SettingsPanel from './components/SettingsPanel';
 
 const AdminDashboard: React.FC = () => {
   return (
