@@ -16,7 +16,7 @@ export default defineConfig({
       'X-Content-Type-Options': 'nosniff',
       'X-XSS-Protection': '1; mode=block',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
-      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com fonts.gstatic.com https://*.vercel.live; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: blob: fonts.gstatic.com; font-src 'self' data: fonts.gstatic.com; connect-src 'self' fonts.googleapis.com https://*.vercel.live; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com fonts.gstatic.com https://*.vercel.live; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: blob: fonts.gstatic.com uploadthingy.s3.us-west-1.amazonaws.com; font-src 'self' data: fonts.gstatic.com; connect-src 'self' fonts.googleapis.com https://*.vercel.live; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
     }
   },
   preview: {
