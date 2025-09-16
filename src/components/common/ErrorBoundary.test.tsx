@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi, afterAll } from 'vitest';
 import ErrorBoundary from './ErrorBoundary';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -10,14 +10,13 @@ const ProblemChild = () => {
 
 describe('ErrorBoundary', () => {
   // Mock console.error to avoid polluting the test output
-  const consoleErrorSpy = vi
-    .spyOn(console, 'error')
-    .mockImplementation(() => {});
+  const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {
+    // Mock implementation for console.error
+  });
 
-  // Use cleanup function instead of afterAll
-  const cleanup = () => {
+  afterAll(() => {
     consoleErrorSpy.mockRestore();
-  };
+  });
 
   it('renders children when there is no error', () => {
     render(

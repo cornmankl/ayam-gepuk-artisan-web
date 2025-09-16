@@ -1,5 +1,4 @@
 import { useState, useEffect, ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldIcon, LockIcon, EyeIcon, EyeOffIcon } from 'lucide-react';
 
