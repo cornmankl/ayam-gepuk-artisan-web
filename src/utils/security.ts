@@ -36,7 +36,8 @@ export class SecurityManager {
                 'wa.me',
                 'api.openai.com',
                 'api.anthropic.com',
-                'generativelanguage.googleapis.com'
+                'generativelanguage.googleapis.com',
+                'https://*.vercel.live'
             ]
         };
     }
