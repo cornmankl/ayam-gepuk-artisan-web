@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { HeartIcon, AwardIcon, UsersIcon, ClockIcon, StarIcon } from 'lucide-react';
+import { SettingsProvider } from '../admin/contexts/SettingsContext';
+import SiteSettingsPreview from '../components/sections/SiteSettingsPreview';
 
 const AboutPage = () => {
   const values = [
@@ -340,6 +342,30 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
+      
+      {/* Site Settings Preview - Admin Feature */}
+      <SettingsProvider>
+        <section className="py-16 px-4 bg-gray-100">
+          <div className="container mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-brand-black mb-4">
+                Site Settings Preview
+              </h2>
+              <p className="text-lg text-brand-black/80 max-w-2xl mx-auto">
+                Preview of current site configuration (Admin Feature)
+              </p>
+            </motion.div>
+            
+            <SiteSettingsPreview />
+          </div>
+        </section>
+      </SettingsProvider>
     </div>
   );
 };

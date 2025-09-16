@@ -38,6 +38,9 @@ const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const MobileTest = lazy(() => import('./components/mobile/MobileTest'));
 
+// Admin components
+const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -80,5 +83,9 @@ export const router = createBrowserRouter([
         element: withTransition(MobileTest),
       },
     ],
+  },
+  {
+    path: '/admin',
+    element: withTransition(AdminDashboard),
   },
 ]);

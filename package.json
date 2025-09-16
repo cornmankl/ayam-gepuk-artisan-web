@@ -1,6 +1,7 @@
 {
-  "name": "magic-patterns-vite-template",
-  "version": "0.0.1",
+  "name": "ayam-gepuk-artisan-web",
+  "version": "1.0.0",
+  "description": "Official website for Ayam Gepuk Artisan - Authentic Indonesian Restaurant in Malaysia",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,7 +17,8 @@
     "test:ui": "vitest --ui",
     "clean": "rm -rf dist node_modules/.vite",
     "serve": "vite preview --port 3000 --host",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "postinstall": "echo 'Dependencies installed successfully'"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.4.0",

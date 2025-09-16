@@ -1,267 +1,98 @@
-# Admin Features Documentation
+# Sistem Admin - Status Pelaksanaan
 
-This document provides detailed documentation for all admin features in the Ayam Gepuk Artisan application.
+## Komponen Utama yang Telah Dicipta
 
-## Table of Contents
-1. [Admin Dashboard](#admin-dashboard)
-2. [Analytics Dashboard](#analytics-dashboard)
-3. [Menu Management](#menu-management)
-4. [Outlets Management](#outlets-management)
-5. [Promotions Management](#promotions-management)
-6. [Authentication System](#authentication-system)
-7. [Role-Based Permissions](#role-based-permissions)
+✅ **Direktori Admin**
+- Direktori asas: `/src/admin`
+- Subdirektori: components, contexts, hooks, services, utils, types
 
-## Admin Dashboard
+✅ **Konteks Tetapan**
+- Fail: `/src/admin/contexts/SettingsContext.tsx`
+- Fungsi: Mengurus tetapan sistem secara global
+- Ciri-ciri:
+  - Tetapan umum (nama laman, deskripsi, logo)
+  - Tetapan SEO (meta title, description, og:image)
+  - Tetapan tema (warna, fon)
+  - Tetapan media sosial
+  - Tetapan menu dan tawaran istimewa
 
-### Features
-- Overview of key business metrics (orders, revenue, customers)
-- Real-time statistics and trends
-- Quick action buttons for common tasks
-- Recent orders tracking with status updates
-- Top-selling menu items visualization
-- Period selector (today, week, month, year)
+✅ **Komponen Panel Tetapan**
+- Fail: `/src/admin/components/SettingsPanel.tsx`
+- Fungsi: Antara muka untuk mengedit tetapan
+- Ciri-ciri:
+  - Borang untuk mengedit semua tetapan
+  - Validasi input
+  - Butang simpan dengan penunjuk status
 
-### Components
-- Statistics cards with trend indicators
-- Quick action panel for menu, orders, support, analytics, outlets, and settings
-- Recent orders list with customer details and order status
-- Top selling items ranking with revenue tracking
+✅ **Dashboard Admin**
+- Fail: `/src/admin/AdminDashboard.tsx`
+- Fungsi: Halaman utama sistem admin
+- Ciri-ciri:
+  - Layout asas admin
+  - Integrasi dengan SettingsContext
 
-### Permissions Required
-- `dashboard:view` - View dashboard overview
-- `orders:view` - View recent orders
-- `analytics:view` - View business analytics
-- `menu:view` - View menu items
-- `customers:view` - View customer metrics
+✅ **Routing Admin**
+- Fail: `/src/admin/adminRouter.tsx`
+- Fail: `/src/router.tsx` (dikemaskini)
+- Fungsi: Routing untuk halaman admin
+- Ciri-ciri:
+  - Route `/admin` untuk dashboard
+  - Dynamic imports untuk komponen admin
 
-## Analytics Dashboard
+✅ **Komponen UI Tambahan**
+- Card components: `/src/components/common/Card.tsx`
+- Button component: `/src/components/common/Button.tsx`
+- Input component: `/src/components/common/Input.tsx`
+- Textarea component: `/src/components/common/Textarea.tsx`
+- Export index: `/src/components/common/index.ts`
 
-### Features
-- Detailed business analytics and insights
-- Revenue tracking and forecasting
-- Customer behavior analysis
-- Order volume trends
-- Peak hours identification
-- Performance metrics by location
-- Customizable reporting periods
+✅ **Preview Tetapan dalam Frontend**
+- Komponen: `/src/components/sections/SiteSettingsPreview.tsx`
+- Integrasi: Ditambah dalam AboutPage
+- Fungsi: Menunjukkan tetapan semasa dalam frontend
 
-### Components
-- Revenue charts with historical data
-- Order statistics by type and status
-- Customer demographics and retention analysis
-- Menu performance metrics
-- Location-based performance comparison
-- Export functionality for reports
+## Ciri-ciri Sistem Admin
 
-### Permissions Required
-- `analytics:view` - View analytics data
-- `analytics:export` - Export reports
-- `analytics:customize` - Customize dashboard views
+### 1. Tetapan Umum
+- Nama laman web
+- Deskripsi laman web
+- Logo dan favicon
+- Maklumat hubungan (email, telefon, alamat)
+- Waktu perniagaan
 
-## Menu Management
+### 2. Tetapan SEO
+- Tajuk meta
+- Deskripsi meta
+- Imej Open Graph
 
-### Features
-- Add, edit, and remove menu items
-- Category-based organization
-- Pricing management
-- Image upload and management
-- Availability toggling
-- Popular item designation
-- Nutritional information tracking
+### 3. Tetapan Tema
+- Warna utama, sekunder dan aksen
+- Jenis fon
+- Sistem warna tersuai
 
-### Components
-- Menu item listing with filtering by category
-- Create/edit form with validation
-- Image preview and upload
-- Pricing controls with currency formatting
-- Availability switches
-- Category selection dropdown
+### 4. Media Sosial
+- URL Facebook, Instagram, Twitter
+- Nombor WhatsApp
 
-### Permissions Required
-- `menu:manage` - Manage menu items
-- `menu:create` - Create new menu items
-- `menu:edit` - Edit existing menu items
-- `menu:delete` - Delete menu items
+### 5. Tetapan Menu
+- Kategori menu
+- Tawaran istimewa semasa
 
-## Outlets Management
+## Akses ke Sistem Admin
 
-### Features
-- Multi-location restaurant management
-- Location details (address, phone, hours)
-- Service offerings management (dine-in, takeaway, delivery, drive-thru)
-- Geolocation data
-- Operating hours configuration
-- Contact information management
+Dalam persekitaran pembangunan, butang "Admin" akan muncul di bahagian atas laman utama.
+Dalam pengeluaran, akses admin akan dilindungi dengan pengesahan.
 
-### Components
-- Outlet listing with status indicators
-- Location details form with map integration
-- Operating hours editor
-- Service offerings checklist
-- Contact information fields
-- Status toggles (active/inactive)
+## Seterusnya
 
-### Permissions Required
-- `outlets:manage` - Manage outlet information
-- `outlets:create` - Create new outlets
-- `outlets:edit` - Edit outlet details
-- `outlets:delete` - Delete outlets
+Untuk melengkapkan sistem admin sepenuhnya, langkah-langkah berikut boleh dipertimbangkan:
 
-## Promotions Management
+1. **Sistem Pengesahan** - Melindungi akses admin dengan login
+2. **Penyimpanan Data** - Menyimpan tetapan dalam pangkalan data
+3. **Pengurusan Pengguna** - Menambah, mengedit dan memadam pengguna admin
+4. **Log Aktiviti** - Merekodkan perubahan yang dibuat dalam sistem
+5. **Sandaran Data** - Fungsi untuk sandaran dan pemulihan tetapan
+6. **Analitik** - Paparan statistik prestasi laman web
+7. **Pengurusan Kandungan** - Mengedit kandungan halaman secara dinamik
 
-### Features
-- Create and manage promotional offers
-- Discount type support (percentage, fixed amount, combo deals)
-- Date range validation
-- Terms and conditions management
-- Applicable items selection
-- Promotion status tracking
-
-### Components
-- Promotion listing with active/expired status
-- Create/edit form with discount type selection
-- Date range pickers
-- Terms and conditions editor
-- Applicable items selector
-- Validation for promotion dates
-
-### Permissions Required
-- `promotions:manage` - Manage promotions
-- `promotions:create` - Create new promotions
-- `promotions:edit` - Edit existing promotions
-- `promotions:delete` - Delete promotions
-
-## Authentication System
-
-### Features
-- Multi-role user authentication
-- Password hashing and encryption
-- Session management
-- Token-based authentication
-- User profile management
-- Password reset functionality
-- Two-factor authentication (optional)
-
-### Components
-- Login/logout functionality
-- User session tracking
-- Password strength validation
-- Account lockout after failed attempts
-- Session timeout handling
-- Secure token generation
-
-### Permissions Required
-- `auth:login` - User login
-- `auth:logout` - User logout
-- `profile:view` - View own profile
-- `profile:edit` - Edit own profile
-
-## Role-Based Permissions
-
-### Available Roles
-1. **Admin** - Full system access
-2. **Manager** - Business operations oversight
-3. **Chef** - Kitchen and menu management
-4. **Cashier** - Order processing and payments
-5. **Delivery** - Delivery order management
-
-### Permission Structure
-- Granular permission assignments
-- Role inheritance hierarchy
-- Custom role creation
-- Permission grouping by feature area
-- Audit logging for permission changes
-
-### Role-Specific Capabilities
-#### Admin
-- All system permissions
-- User management
-- Role assignment
-- System configuration
-- Financial reporting access
-
-#### Manager
-- Dashboard viewing
-- Analytics access
-- Menu management
-- Order oversight
-- Staff performance monitoring
-
-#### Chef
-- Menu item management
-- Ingredient tracking
-- Preparation time optimization
-- Quality control metrics
-
-#### Cashier
-- Order processing
-- Payment handling
-- Customer interaction
-- Receipt generation
-- Daily transaction reporting
-
-#### Delivery
-- Order assignment
-- Delivery status updates
-- Customer communication
-- Route optimization
-- Delivery completion confirmation
-
-## Security Features
-
-### Authentication Security
-- Password complexity requirements
-- Account lockout policies
-- Session timeout enforcement
-- Secure password reset workflows
-- Two-factor authentication support
-
-### Data Protection
-- Encryption at rest and in transit
-- Role-based data access controls
-- Audit logging for sensitive operations
-- Regular security assessments
-- Compliance with data protection regulations
-
-### API Security
-- Rate limiting to prevent abuse
-- Input validation and sanitization
-- Authentication token validation
-- CORS policy enforcement
-- Request/response logging
-
-## Integration Capabilities
-
-### Third-Party Services
-- Payment gateway integration
-- Delivery service APIs
-- SMS notification services
-- Email marketing platforms
-- Social media integration
-
-### Data Export/Import
-- Menu data import/export
-- Order data export
-- Customer data migration
-- Analytics report generation
-- Custom report builder
-
-## Monitoring and Maintenance
-
-### System Health
-- Real-time system monitoring
-- Performance metrics tracking
-- Error rate monitoring
-- Uptime/downtime tracking
-- Automated alerting for issues
-
-### Maintenance Tools
-- Database backup scheduling
-- Log rotation and archiving
-- Cache management
-- System cleanup routines
-- Update deployment automation
-
-## Conclusion
-
-The admin features provide comprehensive management capabilities for running the Ayam Gepuk Artisan restaurant business. With role-based permissions and granular access controls, each staff member can perform their duties efficiently while maintaining security and data integrity.
+Sistem ini kini berfungsi sebagai asas yang kukuh untuk sistem pentadbiran laman web Ayam Gepuk Artisan.

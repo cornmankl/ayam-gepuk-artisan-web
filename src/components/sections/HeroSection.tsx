@@ -234,6 +234,24 @@ const HeroSection: React.FC = () => {
                   </div>
                 </div>
               </motion.div>
+              
+              {/* Admin Access Button - Only visible in development */}
+              {import.meta.env.DEV && (
+                <motion.div
+                  className="absolute -top-4 -left-4 md:-top-6 md:-left-6"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 2 }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Link 
+                    to="/admin"
+                    className="bg-gray-800 text-white px-3 py-1 rounded-lg text-xs font-medium shadow-lg hover:bg-gray-700 transition-colors"
+                  >
+                    Admin
+                  </Link>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </div>

@@ -16,6 +16,7 @@ A modern, responsive website for Ayam Gepuk Artisan restaurant featuring authent
 - **Loyalty Program** - Points system with tiered rewards
 - **Theme Switching** - Light/dark mode support
 - **Accessibility Features** - Screen reader support, keyboard navigation, high contrast mode
+- **Admin Settings System** - Comprehensive site configuration management
 
 ## 🚀 Tech Stack
 
@@ -90,6 +91,17 @@ npx vercel --prod
 
 ```
 src/
+├── admin/                  # Admin system components
+│   ├── components/         # Admin UI components
+│   │   └── SettingsPanel.tsx # Site settings management interface
+│   ├── contexts/           # Admin context providers
+│   │   └── SettingsContext.tsx # Site settings context
+│   ├── hooks/              # Admin custom hooks
+│   ├── services/           # Admin services
+│   ├── utils/              # Admin utility functions
+│   ├── types/              # Admin type definitions
+│   ├── AdminDashboard.tsx  # Main admin dashboard
+│   └── adminRouter.tsx     # Admin routing configuration
 ├── components/              # Reusable components
 │   ├── accessibility/      # Accessibility features and provider
 │   ├── ai/                 # AI Assistant components
@@ -149,6 +161,7 @@ src/
 - **CookieConsent**: GDPR/cookie consent banner
 - **NewsletterSignup**: Email subscription form
 - **WhatsAppIntegration**: WhatsApp chat integration
+- **SettingsPanel**: Admin settings management interface
 
 ## 👤 Authentication & Authorization
 
@@ -181,6 +194,14 @@ Admin users have access to comprehensive management tools:
 - **Menu Management**: Add, edit, and remove menu items
 - **Outlets Management**: Manage restaurant locations and services
 - **Promotions Management**: Create and manage promotional offers
+- **Settings Management**: Configure site-wide settings including:
+  - General site information (name, description, contact details)
+  - SEO settings (meta tags, social media optimization)
+  - Theme customization (colors, fonts)
+  - Social media links
+  - Business hours and special offers
+- **User Management**: Manage admin users and permissions
+- **Content Management**: Edit website content dynamically
 
 ## 🤖 AI Assistant
 
@@ -190,6 +211,40 @@ Powered by a multi-provider AI service supporting:
 - Google Gemini models
 - Knowledge base integration for instant responses
 - Fallback mechanisms for reliability
+
+## ⚙️ Admin Settings System
+
+The admin settings system provides a comprehensive interface for managing site-wide configurations:
+
+### General Settings
+- Site name and description
+- Contact information (email, phone, address)
+- Business hours configuration
+- Logo and favicon management
+
+### SEO Management
+- Meta title and description
+- Open Graph image configuration
+- Social media optimization tags
+
+### Theme Customization
+- Primary, secondary, and accent colors
+- Font family selection
+- Custom CSS variables
+
+### Social Media Integration
+- Facebook, Instagram, Twitter URLs
+- WhatsApp contact number
+
+### Menu Configuration
+- Menu categories management
+- Special offers and promotions
+
+### Access Control
+- Development-only admin access button (hidden in production)
+- Future implementation: Authentication and role-based permissions
+
+To access the admin system in development mode, look for the "Admin" button in the top-left corner of the homepage.
 
 ## 📞 Contact Information
 
@@ -212,6 +267,7 @@ Powered by a multi-provider AI service supporting:
 - ✅ Loyalty rewards program
 - ✅ Shopping cart functionality
 - ✅ Theme switching (light/dark mode)
+- ✅ Comprehensive admin settings system
 
 ## 📄 License
 
