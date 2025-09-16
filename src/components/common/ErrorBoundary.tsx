@@ -49,7 +49,8 @@ class ErrorBoundary extends Component<Props, State> {
                 Oops! Something went wrong
               </h1>
               <p className="text-gray-600 mb-6">
-                We're sorry, but something unexpected happened. Please try refreshing the page or go back to the home page.
+                We're sorry, but something unexpected happened. Please try
+                refreshing the page or go back to the home page.
               </p>
             </div>
 
@@ -61,7 +62,7 @@ class ErrorBoundary extends Component<Props, State> {
                 <RefreshCw size={20} />
                 Try Again
               </button>
-              
+
               <Link
                 to="/"
                 className="w-full bg-white border-2 border-red-600 text-red-600 py-3 px-6 rounded-xl font-medium hover:bg-red-50 transition-all duration-300 flex items-center justify-center gap-2"

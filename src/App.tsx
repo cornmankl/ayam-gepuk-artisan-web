@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
-import ErrorBoundary from './components/common/ErrorBoundary';
-import { CartProvider } from './context/CartContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { AuthProvider } from './context/AuthContext';
-import { LoyaltyProvider } from './context/LoyaltyContext';
-import { AccessibilityProvider } from './components/accessibility/AccessibilityProvider';
+import { Providers } from './Providers';
 import { securityManager } from './utils/security';
 
 export function App() {
@@ -23,18 +18,8 @@ export function App() {
   }, []);
 
   return (
-    <ErrorBoundary>
-      <ThemeProvider>
-        <AccessibilityProvider>
-          <AuthProvider>
-            <LoyaltyProvider>
-              <CartProvider>
-                <RouterProvider router={router} />
-              </CartProvider>
-            </LoyaltyProvider>
-          </AuthProvider>
-        </AccessibilityProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <Providers>
+      <RouterProvider router={router} />
+    </Providers>
   );
 }

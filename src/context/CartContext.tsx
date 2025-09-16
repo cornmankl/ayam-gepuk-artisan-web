@@ -16,19 +16,22 @@ type CartContextType = {
   totalItems: number;
   totalPrice: number;
 };
-export const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(
+  undefined
+);
 export const CartProvider: React.FC<{
   children: React.ReactNode;
-}> = ({
-  children
-}) => {
+}> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
     // Calculate totals when items change
     const itemCount = items.reduce((total, item) => total + item.quantity, 0);
-    const price = items.reduce((total, item) => total + item.price * item.quantity, 0);
+    const price = items.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
     setTotalItems(itemCount);
     setTotalPrice(price);
   }, [items]);
@@ -36,10 +39,14 @@ export const CartProvider: React.FC<{
     setItems(prevItems => {
       const existingItem = prevItems.find(i => i.id === item.id);
       if (existingItem) {
-        return prevItems.map(i => i.id === item.id ? {
-          ...i,
-          quantity: i.quantity + item.quantity
-        } : i);
+        return prevItems.map(i =>
+          i.id === item.id
+            ? {
+                ...i,
+                quantity: i.quantity + item.quantity,
+              }
+            : i
+        );
       }
       return [...prevItems, item];
     });
@@ -52,25 +59,35 @@ export const CartProvider: React.FC<{
       removeFromCart(id);
       return;
     }
-    setItems(prevItems => prevItems.map(item => item.id === id ? {
-      ...item,
-      quantity
-    } : item));
+    setItems(prevItems =>
+      prevItems.map(item =>
+        item.id === id
+          ? {
+              ...item,
+              quantity,
+            }
+          : item
+      )
+    );
   };
   const clearCart = () => {
     setItems([]);
   };
-  return <CartContext.Provider value={{
-    items,
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    clearCart,
-    totalItems,
-    totalPrice
-  }}>
+  return (
+    <CartContext.Provider
+      value={{
+        items,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        totalItems,
+        totalPrice,
+      }}
+    >
       {children}
-    </CartContext.Provider>;
+    </CartContext.Provider>
+  );
 };
 export const useCart = () => {
   const context = useContext(CartContext);

@@ -18,13 +18,13 @@ export function Layout() {
       <OrderButton />
       <Footer />
       <CookieConsent
-        onAccept={(preferences) => {
+        onAccept={preferences => {
           console.log('Cookie preferences accepted:', preferences);
         }}
         onReject={() => {
           console.log('All cookies rejected');
         }}
-        onCustomize={(preferences) => {
+        onCustomize={preferences => {
           console.log('Cookie preferences customized:', preferences);
         }}
       />

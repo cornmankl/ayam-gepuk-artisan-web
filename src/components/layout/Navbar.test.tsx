@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Navbar from './Navbar';
@@ -27,10 +26,14 @@ describe('Navbar', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('link', { name: /ayam gepuk artisan/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /ayam gepuk artisan/i })
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /menu/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /promotions/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /promotions/i })
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
   });

@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import CartPage from './CartPage';
@@ -8,11 +7,11 @@ import React from 'react';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async () => {
-    const actual = await vi.importActual('react-router-dom');
-    return {
-        ...actual,
-        useNavigate: () => mockNavigate,
-    };
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  };
 });
 
 const emptyCartContext = {
@@ -28,7 +27,13 @@ const emptyCartContext = {
 
 const filledCartContext = {
   items: [
-    { id: '1', name: 'Test Item 1', price: 10, quantity: 2, image: 'test1.jpg' },
+    {
+      id: '1',
+      name: 'Test Item 1',
+      price: 10,
+      quantity: 2,
+      image: 'test1.jpg',
+    },
     { id: '2', name: 'Test Item 2', price: 5, quantity: 1, image: 'test2.jpg' },
   ],
   totalItems: 3,

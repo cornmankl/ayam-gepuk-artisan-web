@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import AIAssistantWidget from './AIAssistantWidget';
@@ -38,7 +37,9 @@ describe('AIAssistantWidget', () => {
     // Minimize
     fireEvent.click(screen.getByTitle('Minimize'));
     expect(screen.queryByText('AI Assistant')).not.toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /message/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /message/i })
+    ).toBeInTheDocument();
 
     // Restore
     fireEvent.click(screen.getByRole('button', { name: /message/i }));

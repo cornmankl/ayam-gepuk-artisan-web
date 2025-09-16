@@ -11,17 +11,23 @@ const ButtonTest: React.FC = () => {
   const [testResults, setTestResults] = useState<TestResult[]>([]);
   const [isRunning, setIsRunning] = useState(false);
 
-  const runTest = (buttonName: string, testFunction: () => Promise<boolean>) => {
-    setTestResults(prev => [...prev, { buttonName, status: 'pending', message: 'Testing...' }]);
-    
+  const runTest = (
+    buttonName: string,
+    testFunction: () => Promise<boolean>
+  ) => {
+    setTestResults(prev => [
+      ...prev,
+      { buttonName, status: 'pending', message: 'Testing...' },
+    ]);
+
     testFunction().then(success => {
-      setTestResults(prev => 
-        prev.map(result => 
-          result.buttonName === buttonName 
-            ? { 
-                buttonName, 
-                status: success ? 'success' : 'error', 
-                message: success ? '✅ Working!' : '❌ Failed!' 
+      setTestResults(prev =>
+        prev.map(result =>
+          result.buttonName === buttonName
+            ? {
+                buttonName,
+                status: success ? 'success' : 'error',
+                message: success ? '✅ Working!' : '❌ Failed!',
               }
             : result
         )
@@ -62,7 +68,9 @@ const ButtonTest: React.FC = () => {
   const testCartFunctionality = async (): Promise<boolean> => {
     try {
       // Test if cart context is available
-      const cartButtons = document.querySelectorAll('[data-testid="cart-button"]');
+      const cartButtons = document.querySelectorAll(
+        '[data-testid="cart-button"]'
+      );
       return cartButtons.length > 0;
     } catch {
       return false;
@@ -72,7 +80,9 @@ const ButtonTest: React.FC = () => {
   const testAIAssistant = async (): Promise<boolean> => {
     try {
       // Test if AI assistant button exists
-      const aiButtons = document.querySelectorAll('[data-testid="ai-assistant"]');
+      const aiButtons = document.querySelectorAll(
+        '[data-testid="ai-assistant"]'
+      );
       return aiButtons.length > 0;
     } catch {
       return false;
@@ -101,16 +111,19 @@ const ButtonTest: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'success': return 'text-green-600 bg-green-100';
-      case 'error': return 'text-red-600 bg-red-100';
-      default: return 'text-yellow-600 bg-yellow-100';
+      case 'success':
+        return 'text-green-600 bg-green-100';
+      case 'error':
+        return 'text-red-600 bg-red-100';
+      default:
+        return 'text-yellow-600 bg-yellow-100';
     }
   };
 
   return (
     <div className="fixed top-4 right-4 z-50 bg-white p-6 rounded-lg shadow-lg max-w-md">
       <h3 className="text-lg font-bold mb-4">🧪 Button Test Panel</h3>
-      
+
       <button
         onClick={runAllTests}
         disabled={isRunning}
@@ -136,9 +149,17 @@ const ButtonTest: React.FC = () => {
       {testResults.length > 0 && (
         <div className="mt-4 pt-4 border-t">
           <div className="text-sm">
-            <div>✅ Passed: {testResults.filter(r => r.status === 'success').length}</div>
-            <div>❌ Failed: {testResults.filter(r => r.status === 'error').length}</div>
-            <div>⏳ Pending: {testResults.filter(r => r.status === 'pending').length}</div>
+            <div>
+              ✅ Passed:{' '}
+              {testResults.filter(r => r.status === 'success').length}
+            </div>
+            <div>
+              ❌ Failed: {testResults.filter(r => r.status === 'error').length}
+            </div>
+            <div>
+              ⏳ Pending:{' '}
+              {testResults.filter(r => r.status === 'pending').length}
+            </div>
           </div>
         </div>
       )}

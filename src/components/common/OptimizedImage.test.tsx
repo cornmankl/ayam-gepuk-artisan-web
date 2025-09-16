@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import OptimizedImage from './OptimizedImage';
@@ -9,7 +8,9 @@ const intersectionObserverMock = () => ({
   unobserve: () => null,
   disconnect: () => null,
 });
-window.IntersectionObserver = vi.fn().mockImplementation(intersectionObserverMock);
+window.IntersectionObserver = vi
+  .fn()
+  .mockImplementation(intersectionObserverMock);
 
 describe('OptimizedImage', () => {
   const src = 'test.jpg';
