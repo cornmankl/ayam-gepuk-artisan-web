@@ -29,8 +29,8 @@ export const Button: React.FC<ButtonProps> = ({
       if (disabled || isLoading) baseClasses += 'bg-gray-100 cursor-not-allowed ';
       break;
     case 'danger':
-      baseClasses += 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 ';
-      if (disabled || isLoading) baseClasses += 'bg-red-400 cursor-not-allowed ';
+      baseClasses += 'bg-red-800 text-white hover:bg-red-900 focus:ring-red-700 ';
+      if (disabled || isLoading) baseClasses += 'bg-red-500 cursor-not-allowed ';
       break;
     case 'outline':
       baseClasses += 'bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 ';
