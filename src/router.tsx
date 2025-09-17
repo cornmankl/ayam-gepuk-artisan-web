@@ -3,6 +3,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Layout } from './components/layout/Layout';
 import LoadingSpinner from './components/common/LoadingSpinner';
+import RouterErrorBoundary from './components/common/RouterErrorBoundary';
+import { AdminRoute } from './components/admin/AdminRoute';
 
 // Page transition wrapper component
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
@@ -27,6 +29,11 @@ const withTransition = (Component: React.ComponentType) => (
   </Suspense>
 );
 
+// Higher-order component for protected admin routes
+const withAdminProtection = (Component: React.ComponentType) => (
+  <AdminRoute>{withTransition(Component)}</AdminRoute>
+);
+
 // Lazy-loaded pages
 const HomePage = lazy(() => import('./pages/HomePage'));
 const MenuPage = lazy(() => import('./pages/MenuPage'));
@@ -37,6 +44,7 @@ const CartPage = lazy(() => import('./pages/CartPage'));
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const MobileTest = lazy(() => import('./components/mobile/MobileTest'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Admin components
 const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
@@ -45,6 +53,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <RouterErrorBoundary />,
     children: [
       {
         index: true,
@@ -86,6 +95,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: withTransition(AdminDashboard),
+    element: withAdminProtection(AdminDashboard),
+    errorElement: <RouterErrorBoundary />,
+  },
+  {
+    path: '*',
+    element: withTransition(NotFoundPage),
   },
 ]);

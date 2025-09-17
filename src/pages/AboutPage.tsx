@@ -1,5 +1,11 @@
 import { motion } from 'framer-motion';
-import { HeartIcon, AwardIcon, UsersIcon, ClockIcon, StarIcon } from 'lucide-react';
+import {
+  HeartIcon,
+  AwardIcon,
+  UsersIcon,
+  ClockIcon,
+  StarIcon,
+} from 'lucide-react';
 import { SettingsProvider } from '../admin/contexts/SettingsContext';
 import SiteSettingsPreview from '../components/sections/SiteSettingsPreview';
 
@@ -7,52 +13,59 @@ const AboutPage = () => {
   const values = [
     {
       icon: HeartIcon,
-      title: "Authentic Taste",
-      description: "We use traditional Indonesian recipes passed down through generations to ensure every bite is authentic and delicious."
+      title: 'Authentic Taste',
+      description:
+        'We use traditional Indonesian recipes passed down through generations to ensure every bite is authentic and delicious.',
     },
     {
       icon: AwardIcon,
-      title: "Quality Ingredients",
-      description: "Only the freshest, highest quality ingredients are used in our preparation, sourced from trusted local suppliers."
+      title: 'Quality Ingredients',
+      description:
+        'Only the freshest, highest quality ingredients are used in our preparation, sourced from trusted local suppliers.',
     },
     {
       icon: UsersIcon,
-      title: "Community Focus",
-      description: "We believe in supporting our local community and creating a welcoming space for everyone to enjoy great food."
+      title: 'Community Focus',
+      description:
+        'We believe in supporting our local community and creating a welcoming space for everyone to enjoy great food.',
     },
     {
       icon: ClockIcon,
-      title: "Consistency",
-      description: "Every order is prepared with the same attention to detail and commitment to excellence that our customers expect."
-    }
+      title: 'Consistency',
+      description:
+        'Every order is prepared with the same attention to detail and commitment to excellence that our customers expect.',
+    },
   ];
 
   const team = [
     {
-      name: "Ahmad Rahman",
-      role: "Head Chef & Founder",
-      image: "/team/ahmad.jpg",
-      description: "With 15 years of experience in Indonesian cuisine, Ahmad brings authentic flavors and traditional cooking techniques to every dish."
+      name: 'Ahmad Rahman',
+      role: 'Head Chef & Founder',
+      image: '/team/ahmad.jpg',
+      description:
+        'With 15 years of experience in Indonesian cuisine, Ahmad brings authentic flavors and traditional cooking techniques to every dish.',
     },
     {
-      name: "Siti Nurhaliza",
-      role: "Operations Manager",
-      image: "/team/siti.jpg",
-      description: "Siti ensures smooth operations and maintains the highest standards of service that our customers have come to expect."
+      name: 'Siti Nurhaliza',
+      role: 'Operations Manager',
+      image: '/team/siti.jpg',
+      description:
+        'Siti ensures smooth operations and maintains the highest standards of service that our customers have come to expect.',
     },
     {
-      name: "Muhammad Ali",
-      role: "Quality Control",
-      image: "/team/ali.jpg",
-      description: "Muhammad oversees ingredient quality and food safety standards to ensure every meal meets our strict quality requirements."
-    }
+      name: 'Muhammad Ali',
+      role: 'Quality Control',
+      image: '/team/ali.jpg',
+      description:
+        'Muhammad oversees ingredient quality and food safety standards to ensure every meal meets our strict quality requirements.',
+    },
   ];
 
   const stats = [
-    { number: "5000+", label: "Happy Customers", icon: UsersIcon },
-    { number: "3", label: "Years of Excellence", icon: AwardIcon },
-    { number: "50+", label: "Menu Items", icon: StarIcon },
-    { number: "98%", label: "Customer Satisfaction", icon: HeartIcon }
+    { number: '5000+', label: 'Happy Customers', icon: UsersIcon },
+    { number: '3', label: 'Years of Excellence', icon: AwardIcon },
+    { number: '50+', label: 'Menu Items', icon: StarIcon },
+    { number: '98%', label: 'Customer Satisfaction', icon: HeartIcon },
   ];
 
   return (
@@ -63,21 +76,21 @@ const AboutPage = () => {
           className="absolute top-0 left-0 w-full h-full bg-[url('https://uploadthingy.s3.us-west-1.amazonaws.com/p5irPgQNgTn2ETzne3anjp/ayamgepukartisanseremban2_%281%29.jpg')] opacity-10 bg-center bg-cover"
           animate={{
             scale: [1, 1.1, 1],
-            rotate: [0, 1, 0]
+            rotate: [0, 1, 0],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: 'easeInOut',
           }}
         />
-        
+
         <div className="container mx-auto relative z-10">
           <motion.div
             className="text-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.h1
               className="text-4xl md:text-6xl font-heading font-bold text-brand-black mb-6"
@@ -93,7 +106,9 @@ const AboutPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Born from a passion for authentic Indonesian cuisine, Ayam Gepuk Artisan brings you the true taste of Indonesia with every crispy, flavorful bite.
+              Born from a passion for authentic Indonesian cuisine, Ayam Gepuk
+              Artisan brings you the true taste of Indonesia with every crispy,
+              flavorful bite.
             </motion.p>
           </motion.div>
         </div>
@@ -114,13 +129,23 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-4 text-brand-black/80 font-body leading-relaxed">
                 <p>
-                  Our story began in 2021 when our founder, Ahmad Rahman, decided to share the authentic taste of Indonesian Ayam Gepuk with the Malaysian community. Having spent years perfecting traditional recipes passed down from his grandmother, Ahmad wanted to create a place where people could experience the true essence of Indonesian cuisine.
+                  Our story began in 2021 when our founder, Ahmad Rahman,
+                  decided to share the authentic taste of Indonesian Ayam Gepuk
+                  with the Malaysian community. Having spent years perfecting
+                  traditional recipes passed down from his grandmother, Ahmad
+                  wanted to create a place where people could experience the
+                  true essence of Indonesian cuisine.
                 </p>
                 <p>
-                  What started as a small family recipe has grown into a beloved local establishment, serving thousands of satisfied customers who appreciate the authentic flavors and quality ingredients that make our dishes special.
+                  What started as a small family recipe has grown into a beloved
+                  local establishment, serving thousands of satisfied customers
+                  who appreciate the authentic flavors and quality ingredients
+                  that make our dishes special.
                 </p>
                 <p>
-                  Today, we continue to honor our roots while embracing innovation, ensuring that every plate of Ayam Gepuk we serve tells a story of tradition, passion, and culinary excellence.
+                  Today, we continue to honor our roots while embracing
+                  innovation, ensuring that every plate of Ayam Gepuk we serve
+                  tells a story of tradition, passion, and culinary excellence.
                 </p>
               </div>
             </motion.div>
@@ -145,8 +170,12 @@ const AboutPage = () => {
                     <AwardIcon size={24} className="text-brand-red" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-brand-black">Certified Halal</h3>
-                    <p className="text-brand-black/70 font-body">JAKIM Certified</p>
+                    <h3 className="font-heading font-bold text-brand-black">
+                      Certified Halal
+                    </h3>
+                    <p className="text-brand-black/70 font-body">
+                      JAKIM Certified
+                    </p>
                   </div>
                 </div>
               </div>
@@ -169,7 +198,8 @@ const AboutPage = () => {
               Our Values
             </h2>
             <p className="text-lg text-brand-black/80 max-w-2xl mx-auto">
-              These core values guide everything we do, from ingredient selection to customer service.
+              These core values guide everything we do, from ingredient
+              selection to customer service.
             </p>
           </motion.div>
 
@@ -313,7 +343,8 @@ const AboutPage = () => {
               Ready to Experience Authentic Indonesian Cuisine?
             </h2>
             <p className="text-lg text-brand-black/80 mb-8 max-w-2xl mx-auto">
-              Visit us today and taste the difference that passion and tradition make.
+              Visit us today and taste the difference that passion and tradition
+              make.
             </p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -342,7 +373,7 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Site Settings Preview - Admin Feature */}
       <SettingsProvider>
         <section className="py-16 px-4 bg-gray-100">
@@ -361,7 +392,7 @@ const AboutPage = () => {
                 Preview of current site configuration (Admin Feature)
               </p>
             </motion.div>
-            
+
             <SiteSettingsPreview />
           </div>
         </section>

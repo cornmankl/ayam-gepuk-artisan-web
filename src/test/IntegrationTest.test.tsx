@@ -16,7 +16,7 @@ const mockIntersectionObserver = vi.fn();
 mockIntersectionObserver.mockReturnValue({
   observe: () => null,
   unobserve: () => null,
-  disconnect: () => null
+  disconnect: () => null,
 });
 window.IntersectionObserver = mockIntersectionObserver;
 
@@ -48,7 +48,7 @@ const localStorageMock = (() => {
     },
     clear: () => {
       store = {};
-    }
+    },
   };
 })();
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
@@ -114,7 +114,9 @@ describe('Complete Application Integration Test', () => {
       return (
         <div>
           <div data-testid="theme-context">Theme Context Working</div>
-          <div data-testid="accessibility-context">Accessibility Context Working</div>
+          <div data-testid="accessibility-context">
+            Accessibility Context Working
+          </div>
           <div data-testid="auth-context">Auth Context Working</div>
           <div data-testid="loyalty-context">Loyalty Context Working</div>
           <div data-testid="cart-context">Cart Context Working</div>

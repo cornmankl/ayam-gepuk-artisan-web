@@ -1,33 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    ShieldIcon,
-    EyeIcon,
-    LockIcon,
-    DatabaseIcon,
-    UserIcon,
-    MailIcon,
-    PhoneIcon,
-    CalendarIcon,
-    FileTextIcon,
-    AlertCircleIcon
+  ShieldIcon,
+  EyeIcon,
+  LockIcon,
+  DatabaseIcon,
+  UserIcon,
+  MailIcon,
+  PhoneIcon,
+  CalendarIcon,
+  FileTextIcon,
+  AlertCircleIcon,
 } from 'lucide-react';
 
 const PrivacyPolicy: React.FC = () => {
-    const sections = [
-        {
-            id: 'introduction',
-            title: 'Introduction',
-            icon: FileTextIcon,
-            content: `At Ayam Gepuk Artisan, we are committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+  const sections = [
+    {
+      id: 'introduction',
+      title: 'Introduction',
+      icon: FileTextIcon,
+      content: `At Ayam Gepuk Artisan, we are committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
 
-We respect your privacy rights and are committed to complying with applicable data protection laws, including the Personal Data Protection Act 2010 (PDPA) of Malaysia and the General Data Protection Regulation (GDPR) where applicable.`
-        },
-        {
-            id: 'information-collection',
-            title: 'Information We Collect',
-            icon: DatabaseIcon,
-            content: `We collect information you provide directly to us, such as when you:
+We respect your privacy rights and are committed to complying with applicable data protection laws, including the Personal Data Protection Act 2010 (PDPA) of Malaysia and the General Data Protection Regulation (GDPR) where applicable.`,
+    },
+    {
+      id: 'information-collection',
+      title: 'Information We Collect',
+      icon: DatabaseIcon,
+      content: `We collect information you provide directly to us, such as when you:
 
 • Create an account or profile
 • Place an order or make a reservation
@@ -46,13 +46,13 @@ We respect your privacy rights and are committed to complying with applicable da
 • Browser type and version
 • Pages visited and time spent on our website
 • Referring website information
-• Cookies and similar tracking technologies`
-        },
-        {
-            id: 'how-we-use',
-            title: 'How We Use Your Information',
-            icon: EyeIcon,
-            content: `We use the information we collect to:
+• Cookies and similar tracking technologies`,
+    },
+    {
+      id: 'how-we-use',
+      title: 'How We Use Your Information',
+      icon: EyeIcon,
+      content: `We use the information we collect to:
 
 **Service Delivery:**
 • Process and fulfill your orders
@@ -74,13 +74,13 @@ We respect your privacy rights and are committed to complying with applicable da
 **Legal Compliance:**
 • Comply with applicable laws and regulations
 • Protect our rights and interests
-• Prevent fraud and ensure security`
-        },
-        {
-            id: 'information-sharing',
-            title: 'Information Sharing and Disclosure',
-            icon: UserIcon,
-            content: `We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:
+• Prevent fraud and ensure security`,
+    },
+    {
+      id: 'information-sharing',
+      title: 'Information Sharing and Disclosure',
+      icon: UserIcon,
+      content: `We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:
 
 **Service Providers:**
 • Payment processors for transaction processing
@@ -98,13 +98,13 @@ We respect your privacy rights and are committed to complying with applicable da
 • In connection with a merger, acquisition, or sale of assets
 • With your explicit consent
 
-All third parties are required to maintain the confidentiality of your information and use it only for the purposes we specify.`
-        },
-        {
-            id: 'data-security',
-            title: 'Data Security',
-            icon: LockIcon,
-            content: `We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+All third parties are required to maintain the confidentiality of your information and use it only for the purposes we specify.`,
+    },
+    {
+      id: 'data-security',
+      title: 'Data Security',
+      icon: LockIcon,
+      content: `We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
 
 **Security Measures:**
 • SSL encryption for data transmission
@@ -122,13 +122,13 @@ All third parties are required to maintain the confidentiality of your informati
 **Data Breach Response:**
 • We will notify affected users within 72 hours
 • We will report to relevant authorities as required
-• We will take immediate steps to contain and remedy the breach`
-        },
-        {
-            id: 'your-rights',
-            title: 'Your Rights',
-            icon: ShieldIcon,
-            content: `You have the following rights regarding your personal information:
+• We will take immediate steps to contain and remedy the breach`,
+    },
+    {
+      id: 'your-rights',
+      title: 'Your Rights',
+      icon: ShieldIcon,
+      content: `You have the following rights regarding your personal information:
 
 **Access and Portability:**
 • Request access to your personal data
@@ -152,13 +152,13 @@ All third parties are required to maintain the confidentiality of your informati
 • Use the contact form on our website
 • Update your preferences in your account settings
 
-We will respond to your request within 30 days.`
-        },
-        {
-            id: 'cookies',
-            title: 'Cookies and Tracking Technologies',
-            icon: DatabaseIcon,
-            content: `We use cookies and similar technologies to enhance your experience on our website.
+We will respond to your request within 30 days.`,
+    },
+    {
+      id: 'cookies',
+      title: 'Cookies and Tracking Technologies',
+      icon: DatabaseIcon,
+      content: `We use cookies and similar technologies to enhance your experience on our website.
 
 **Types of Cookies:**
 • **Necessary Cookies:** Essential for website functionality
@@ -176,23 +176,23 @@ We will respond to your request within 30 days.`
 • Google Analytics for website analytics
 • Social media plugins for sharing
 • Payment processors for transactions
-• Email marketing services for communications`
-        },
-        {
-            id: 'children-privacy',
-            title: 'Children\'s Privacy',
-            icon: AlertCircleIcon,
-            content: `Our services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13.
+• Email marketing services for communications`,
+    },
+    {
+      id: 'children-privacy',
+      title: "Children's Privacy",
+      icon: AlertCircleIcon,
+      content: `Our services are not directed to children under the age of 13. We do not knowingly collect personal information from children under 13.
 
 If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately. We will take steps to delete such information from our systems.
 
-For children between 13 and 18, we recommend parental guidance when using our services and providing personal information.`
-        },
-        {
-            id: 'international-transfers',
-            title: 'International Data Transfers',
-            icon: MailIcon,
-            content: `Your personal information may be transferred to and processed in countries other than your country of residence. We ensure that such transfers comply with applicable data protection laws.
+For children between 13 and 18, we recommend parental guidance when using our services and providing personal information.`,
+    },
+    {
+      id: 'international-transfers',
+      title: 'International Data Transfers',
+      icon: MailIcon,
+      content: `Your personal information may be transferred to and processed in countries other than your country of residence. We ensure that such transfers comply with applicable data protection laws.
 
 **Safeguards for International Transfers:**
 • Adequacy decisions by relevant authorities
@@ -201,13 +201,13 @@ For children between 13 and 18, we recommend parental guidance when using our se
 • Certification schemes
 • Your explicit consent
 
-We will only transfer your data to countries that provide adequate protection or with appropriate safeguards in place.`
-        },
-        {
-            id: 'changes',
-            title: 'Changes to This Policy',
-            icon: CalendarIcon,
-            content: `We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws.
+We will only transfer your data to countries that provide adequate protection or with appropriate safeguards in place.`,
+    },
+    {
+      id: 'changes',
+      title: 'Changes to This Policy',
+      icon: CalendarIcon,
+      content: `We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws.
 
 **Notification of Changes:**
 • We will notify you of significant changes via email
@@ -220,13 +220,13 @@ We will only transfer your data to countries that provide adequate protection or
 • You can request copies of previous policies
 • We will honor previous consent where applicable
 
-We encourage you to review this policy periodically to stay informed about how we protect your information.`
-        },
-        {
-            id: 'contact',
-            title: 'Contact Us',
-            icon: PhoneIcon,
-            content: `If you have any questions about this Privacy Policy or our data practices, please contact us:
+We encourage you to review this policy periodically to stay informed about how we protect your information.`,
+    },
+    {
+      id: 'contact',
+      title: 'Contact Us',
+      icon: PhoneIcon,
+      content: `If you have any questions about this Privacy Policy or our data practices, please contact us:
 
 **Data Protection Officer:**
 Email: privacy@ayamgepukartisan.com
@@ -241,107 +241,112 @@ Address: 123 Jalan Seremban, Seremban, Negeri Sembilan 70000
 **Complaints:**
 If you are not satisfied with our response, you have the right to lodge a complaint with the relevant data protection authority in your jurisdiction.
 
-**Last Updated:** October 20, 2023`
-        }
-    ];
+**Last Updated:** October 20, 2023`,
+    },
+  ];
 
-    return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4">
-            <div className="container mx-auto max-w-4xl">
-                {/* Header */}
-                <motion.div
-                    className="text-center mb-12"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="w-20 h-20 bg-brand-red/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <ShieldIcon size={40} className="text-brand-red" />
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-heading font-bold text-brand-black dark:text-white mb-4">
-                        Privacy Policy
-                    </h1>
-                    <p className="text-lg text-brand-black/70 dark:text-gray-300 font-body max-w-2xl mx-auto">
-                        Your privacy is important to us. Learn how we collect, use, and protect your personal information.
-                    </p>
-                    <div className="mt-4 text-sm text-brand-black/60 dark:text-gray-400 font-body">
-                        Last updated: October 20, 2023
-                    </div>
-                </motion.div>
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4">
+      <div className="container mx-auto max-w-4xl">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="w-20 h-20 bg-brand-red/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <ShieldIcon size={40} className="text-brand-red" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-brand-black dark:text-white mb-4">
+            Privacy Policy
+          </h1>
+          <p className="text-lg text-brand-black/70 dark:text-gray-300 font-body max-w-2xl mx-auto">
+            Your privacy is important to us. Learn how we collect, use, and
+            protect your personal information.
+          </p>
+          <div className="mt-4 text-sm text-brand-black/60 dark:text-gray-400 font-body">
+            Last updated: October 20, 2023
+          </div>
+        </motion.div>
 
-                {/* Table of Contents */}
-                <motion.div
-                    className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-brand mb-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    <h2 className="text-xl font-heading font-bold text-brand-black dark:text-white mb-4">
-                        Table of Contents
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {sections.map((section, index) => (
-                            <a
-                                key={section.id}
-                                href={`#${section.id}`}
-                                className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300"
-                            >
-                                <span className="w-6 h-6 bg-brand-red/10 rounded-full flex items-center justify-center text-sm font-heading font-semibold text-brand-red">
-                                    {index + 1}
-                                </span>
-                                <span className="text-brand-black dark:text-white font-body">
-                                    {section.title}
-                                </span>
-                            </a>
-                        ))}
-                    </div>
-                </motion.div>
+        {/* Table of Contents */}
+        <motion.div
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-brand mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h2 className="text-xl font-heading font-bold text-brand-black dark:text-white mb-4">
+            Table of Contents
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {sections.map((section, index) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300"
+              >
+                <span className="w-6 h-6 bg-brand-red/10 rounded-full flex items-center justify-center text-sm font-heading font-semibold text-brand-red">
+                  {index + 1}
+                </span>
+                <span className="text-brand-black dark:text-white font-body">
+                  {section.title}
+                </span>
+              </a>
+            ))}
+          </div>
+        </motion.div>
 
-                {/* Content Sections */}
-                <div className="space-y-8">
-                    {sections.map((section, index) => (
-                        <motion.section
-                            key={section.id}
-                            id={section.id}
-                            className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-brand"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                        >
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 bg-brand-red/10 rounded-full flex items-center justify-center">
-                                    <section.icon size={24} className="text-brand-red" />
-                                </div>
-                                <h2 className="text-2xl font-heading font-bold text-brand-black dark:text-white">
-                                    {section.title}
-                                </h2>
-                            </div>
-                            <div className="prose prose-lg max-w-none">
-                                <p className="text-brand-black/80 dark:text-gray-300 font-body leading-relaxed whitespace-pre-line">
-                                    {section.content}
-                                </p>
-                            </div>
-                        </motion.section>
-                    ))}
+        {/* Content Sections */}
+        <div className="space-y-8">
+          {sections.map((section, index) => (
+            <motion.section
+              key={section.id}
+              id={section.id}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-brand"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-brand-red/10 rounded-full flex items-center justify-center">
+                  <section.icon size={24} className="text-brand-red" />
                 </div>
-
-                {/* Footer */}
-                <motion.div
-                    className="text-center mt-12 pt-8 border-t border-gray-200 dark:border-gray-600"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                >
-                    <p className="text-brand-black/60 dark:text-gray-400 font-body">
-                        If you have any questions about this Privacy Policy, please contact us at{' '}
-                        <a href="mailto:privacy@ayamgepukartisan.com" className="text-brand-red hover:underline">
-                            privacy@ayamgepukartisan.com
-                        </a>
-                    </p>
-                </motion.div>
-            </div>
+                <h2 className="text-2xl font-heading font-bold text-brand-black dark:text-white">
+                  {section.title}
+                </h2>
+              </div>
+              <div className="prose prose-lg max-w-none">
+                <p className="text-brand-black/80 dark:text-gray-300 font-body leading-relaxed whitespace-pre-line">
+                  {section.content}
+                </p>
+              </div>
+            </motion.section>
+          ))}
         </div>
-    );
+
+        {/* Footer */}
+        <motion.div
+          className="text-center mt-12 pt-8 border-t border-gray-200 dark:border-gray-600"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <p className="text-brand-black/60 dark:text-gray-400 font-body">
+            If you have any questions about this Privacy Policy, please contact
+            us at{' '}
+            <a
+              href="mailto:privacy@ayamgepukartisan.com"
+              className="text-brand-red hover:underline"
+            >
+              privacy@ayamgepukartisan.com
+            </a>
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  );
 };
 
 export default PrivacyPolicy;

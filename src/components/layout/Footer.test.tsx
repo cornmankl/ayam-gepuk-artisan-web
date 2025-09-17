@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Footer from './Footer';
@@ -12,7 +11,9 @@ describe('Footer', () => {
       </Router>
     );
 
-    expect(screen.getByText('Get Exclusive Offers & Updates')).toBeInTheDocument();
+    expect(
+      screen.getByText('Get Exclusive Offers & Updates')
+    ).toBeInTheDocument();
     expect(screen.getByText('Opening Hours')).toBeInTheDocument();
     expect(screen.getByText('Quick Links')).toBeInTheDocument();
     expect(screen.getByText('Contact Us')).toBeInTheDocument();
@@ -43,9 +44,18 @@ describe('Footer', () => {
       </Router>
     );
 
-    expect(screen.getByLabelText('Facebook')).toHaveAttribute('href', 'https://www.facebook.com/AyamGepukArtisan');
-    expect(screen.getByLabelText('Instagram')).toHaveAttribute('href', 'https://www.instagram.com/ayamgepukartisan');
-    expect(screen.getByLabelText('TikTok')).toHaveAttribute('href', 'https://www.tiktok.com/@ayamgepukartisan');
+    expect(screen.getByLabelText('Facebook')).toHaveAttribute(
+      'href',
+      'https://www.facebook.com/AyamGepukArtisan'
+    );
+    expect(screen.getByLabelText('Instagram')).toHaveAttribute(
+      'href',
+      'https://www.instagram.com/ayamgepukartisan'
+    );
+    expect(screen.getByLabelText('TikTok')).toHaveAttribute(
+      'href',
+      'https://www.tiktok.com/@ayamgepukartisan'
+    );
   });
 
   it('displays the current year in the copyright notice', () => {
@@ -56,6 +66,10 @@ describe('Footer', () => {
     );
 
     const currentYear = new Date().getFullYear();
-    expect(screen.getByText(`© ${currentYear} Ayam Gepuk Artisan. All rights reserved.`)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        `© ${currentYear} Ayam Gepuk Artisan. All rights reserved.`
+      )
+    ).toBeInTheDocument();
   });
 });

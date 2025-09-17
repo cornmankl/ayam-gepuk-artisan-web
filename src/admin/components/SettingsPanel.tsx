@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useSettings } from '../contexts/SettingsContext';
-import { Card, CardHeader, CardTitle, CardContent } from '../../components/common/Card';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
 import { Input } from '../../components/common/Input';
 import { Textarea } from '../../components/common/Textarea';
@@ -15,7 +20,9 @@ const SettingsPanel: React.FC = () => {
     setFormData(settings);
   }, [settings]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -23,10 +30,10 @@ const SettingsPanel: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
-    
+
     // Update settings
     updateSettings(formData);
-    
+
     // Simulate saving
     setTimeout(() => {
       setIsSaving(false);
@@ -52,7 +59,9 @@ const SettingsPanel: React.FC = () => {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Site Name</label>
+                <label className="block text-sm font-medium mb-1">
+                  Site Name
+                </label>
                 <Input
                   name="siteName"
                   value={formData.siteName}
@@ -61,7 +70,9 @@ const SettingsPanel: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Contact Email</label>
+                <label className="block text-sm font-medium mb-1">
+                  Contact Email
+                </label>
                 <Input
                   name="contactEmail"
                   value={formData.contactEmail}
@@ -71,7 +82,9 @@ const SettingsPanel: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Contact Phone</label>
+                <label className="block text-sm font-medium mb-1">
+                  Contact Phone
+                </label>
                 <Input
                   name="contactPhone"
                   value={formData.contactPhone}
@@ -80,7 +93,9 @@ const SettingsPanel: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Address</label>
+                <label className="block text-sm font-medium mb-1">
+                  Address
+                </label>
                 <Input
                   name="address"
                   value={formData.address}
@@ -90,7 +105,9 @@ const SettingsPanel: React.FC = () => {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Business Hours</label>
+              <label className="block text-sm font-medium mb-1">
+                Business Hours
+              </label>
               <Input
                 name="businessHours"
                 value={formData.businessHours}
@@ -108,7 +125,9 @@ const SettingsPanel: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Meta Title</label>
+              <label className="block text-sm font-medium mb-1">
+                Meta Title
+              </label>
               <Input
                 name="metaTitle"
                 value={formData.metaTitle}
@@ -117,7 +136,9 @@ const SettingsPanel: React.FC = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Meta Description</label>
+              <label className="block text-sm font-medium mb-1">
+                Meta Description
+              </label>
               <Textarea
                 name="metaDescription"
                 value={formData.metaDescription}
@@ -137,13 +158,20 @@ const SettingsPanel: React.FC = () => {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Primary Color</label>
+                <label className="block text-sm font-medium mb-1">
+                  Primary Color
+                </label>
                 <div className="flex items-center space-x-2">
                   <input
                     type="color"
                     name="primaryColor"
                     value={formData.primaryColor}
-                    onChange={(e) => setFormData(prev => ({ ...prev, primaryColor: e.target.value }))}
+                    onChange={e =>
+                      setFormData(prev => ({
+                        ...prev,
+                        primaryColor: e.target.value,
+                      }))
+                    }
                     className="w-10 h-10 border-0 rounded cursor-pointer"
                   />
                   <Input
@@ -155,13 +183,20 @@ const SettingsPanel: React.FC = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Secondary Color</label>
+                <label className="block text-sm font-medium mb-1">
+                  Secondary Color
+                </label>
                 <div className="flex items-center space-x-2">
                   <input
                     type="color"
                     name="secondaryColor"
                     value={formData.secondaryColor}
-                    onChange={(e) => setFormData(prev => ({ ...prev, secondaryColor: e.target.value }))}
+                    onChange={e =>
+                      setFormData(prev => ({
+                        ...prev,
+                        secondaryColor: e.target.value,
+                      }))
+                    }
                     className="w-10 h-10 border-0 rounded cursor-pointer"
                   />
                   <Input
@@ -173,13 +208,20 @@ const SettingsPanel: React.FC = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Accent Color</label>
+                <label className="block text-sm font-medium mb-1">
+                  Accent Color
+                </label>
                 <div className="flex items-center space-x-2">
                   <input
                     type="color"
                     name="accentColor"
                     value={formData.accentColor}
-                    onChange={(e) => setFormData(prev => ({ ...prev, accentColor: e.target.value }))}
+                    onChange={e =>
+                      setFormData(prev => ({
+                        ...prev,
+                        accentColor: e.target.value,
+                      }))
+                    }
                     className="w-10 h-10 border-0 rounded cursor-pointer"
                   />
                   <Input
@@ -202,7 +244,9 @@ const SettingsPanel: React.FC = () => {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Facebook URL</label>
+                <label className="block text-sm font-medium mb-1">
+                  Facebook URL
+                </label>
                 <Input
                   name="facebookUrl"
                   value={formData.facebookUrl}
@@ -211,7 +255,9 @@ const SettingsPanel: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Instagram URL</label>
+                <label className="block text-sm font-medium mb-1">
+                  Instagram URL
+                </label>
                 <Input
                   name="instagramUrl"
                   value={formData.instagramUrl}
@@ -220,7 +266,9 @@ const SettingsPanel: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Twitter URL</label>
+                <label className="block text-sm font-medium mb-1">
+                  Twitter URL
+                </label>
                 <Input
                   name="twitterUrl"
                   value={formData.twitterUrl}
@@ -229,7 +277,9 @@ const SettingsPanel: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">WhatsApp Number</label>
+                <label className="block text-sm font-medium mb-1">
+                  WhatsApp Number
+                </label>
                 <Input
                   name="whatsappNumber"
                   value={formData.whatsappNumber}
@@ -248,7 +298,9 @@ const SettingsPanel: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Special Offers</label>
+              <label className="block text-sm font-medium mb-1">
+                Special Offers
+              </label>
               <Textarea
                 name="specialOffers"
                 value={formData.specialOffers}

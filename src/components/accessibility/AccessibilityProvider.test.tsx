@@ -1,7 +1,10 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { AccessibilityProvider, useAccessibility, AccessibilitySettingsPanel } from './AccessibilityProvider';
+import {
+  AccessibilityProvider,
+  useAccessibility,
+  AccessibilitySettingsPanel,
+} from './AccessibilityProvider';
 import React from 'react';
 
 // Mock localStorage
@@ -17,26 +20,25 @@ const localStorageMock = (() => {
     },
     removeItem: (key: string) => {
       delete store[key];
-    }
+    },
   };
 })();
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: vi.fn().mockImplementation(query => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: vi.fn(), // deprecated
-      removeListener: vi.fn(), // deprecated
-      addEventListener: vi.fn(),
-      removeEventListener: vi.fn(),
-      dispatchEvent: vi.fn(),
-    })),
-  });
-
+  writable: true,
+  value: vi.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
 
 const TestConsumer = () => {
   const { settings, updateSettings, resetSettings } = useAccessibility();
@@ -44,7 +46,9 @@ const TestConsumer = () => {
     <div>
       <div data-testid="highContrast">{settings.highContrast.toString()}</div>
       <div data-testid="largeText">{settings.largeText.toString()}</div>
-      <button onClick={() => updateSettings({ highContrast: true })}>Update</button>
+      <button onClick={() => updateSettings({ highContrast: true })}>
+        Update
+      </button>
       <button onClick={() => resetSettings()}>Reset</button>
     </div>
   );
@@ -94,24 +98,28 @@ describe('AccessibilityProvider', () => {
 });
 
 describe('AccessibilitySettingsPanel', () => {
-    it('opens and closes the panel', () => {
-        render(
-          <AccessibilityProvider>
-            <AccessibilitySettingsPanel />
-          </AccessibilityProvider>
-        );
-    
-        // Panel should be closed initially
-        expect(screen.queryByText('Accessibility Settings')).not.toBeInTheDocument();
-    
-        // Open the panel
-        fireEvent.click(screen.getByLabelText('Accessibility Settings'));
-        expect(screen.getByText('Accessibility Settings')).toBeInTheDocument();
-    
-        // Close the panel
-        fireEvent.click(screen.getByLabelText('Close'));
-        expect(screen.queryByText('Accessibility Settings')).not.toBeInTheDocument();
-      });
+  it('opens and closes the panel', () => {
+    render(
+      <AccessibilityProvider>
+        <AccessibilitySettingsPanel />
+      </AccessibilityProvider>
+    );
+
+    // Panel should be closed initially
+    expect(
+      screen.queryByText('Accessibility Settings')
+    ).not.toBeInTheDocument();
+
+    // Open the panel
+    fireEvent.click(screen.getByLabelText('Accessibility Settings'));
+    expect(screen.getByText('Accessibility Settings')).toBeInTheDocument();
+
+    // Close the panel
+    fireEvent.click(screen.getByLabelText('Close'));
+    expect(
+      screen.queryByText('Accessibility Settings')
+    ).not.toBeInTheDocument();
+  });
 
   it('updates context when a setting is changed', () => {
     render(

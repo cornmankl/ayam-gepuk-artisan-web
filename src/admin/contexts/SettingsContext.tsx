@@ -11,28 +11,28 @@ export interface SiteSettings {
   contactPhone: string;
   address: string;
   businessHours: string;
-  
+
   // SEO settings
   metaTitle: string;
   metaDescription: string;
   ogImage: string;
-  
+
   // Theme settings
   primaryColor: string;
   secondaryColor: string;
   accentColor: string;
   fontFamily: string;
-  
+
   // Social media
   facebookUrl: string;
   instagramUrl: string;
   twitterUrl: string;
   whatsappNumber: string;
-  
+
   // Menu settings
   menuCategories: string[];
   specialOffers: string;
-  
+
   // Analytics
   googleAnalyticsId: string;
   facebookPixelId: string;
@@ -62,7 +62,8 @@ const initialState: SettingsState = {
     address: '123, Jalan ABC, 70000 Seremban, Negeri Sembilan',
     businessHours: '10:00 AM - 10:00 PM',
     metaTitle: 'Ayam Gepuk Artisan - Restoran Authentic Indonesia',
-    metaDescription: 'Nikmati hidangan ayam gepuk authentic Indonesia dengan sambal istimewa di restoran kami di Seremban, Malaysia.',
+    metaDescription:
+      'Nikmati hidangan ayam gepuk authentic Indonesia dengan sambal istimewa di restoran kami di Seremban, Malaysia.',
     ogImage: '/og-image.jpg',
     primaryColor: '#dc2626',
     secondaryColor: '#f8fafc',
@@ -82,7 +83,10 @@ const initialState: SettingsState = {
 };
 
 // Reducer
-const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {
+const settingsReducer = (
+  state: SettingsState,
+  action: SettingsAction
+): SettingsState => {
   switch (action.type) {
     case 'LOAD_SETTINGS_START':
       return {
@@ -118,10 +122,14 @@ interface SettingsContextType extends SettingsState {
   loadSettings: () => void;
 }
 
-const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
+const SettingsContext = createContext<SettingsContextType | undefined>(
+  undefined
+);
 
 // Provider component
-export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(settingsReducer, initialState);
 
   // In a real app, this would fetch from an API
@@ -130,23 +138,32 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     try {
       // Simulate API call
       setTimeout(() => {
-        dispatch({ type: 'LOAD_SETTINGS_SUCCESS', payload: initialState.settings });
+        dispatch({
+          type: 'LOAD_SETTINGS_SUCCESS',
+          payload: initialState.settings,
+        });
       }, 500);
     } catch (error) {
-      dispatch({ type: 'LOAD_SETTINGS_ERROR', payload: 'Failed to load settings' });
+      dispatch({
+        type: 'LOAD_SETTINGS_ERROR',
+        payload: 'Failed to load settings',
+      });
     }
   };
 
   // In a real app, this would save to an API
   const updateSettings = (settings: Partial<SiteSettings>) => {
     dispatch({ type: 'UPDATE_SETTINGS', payload: settings });
-    
+
     // Simulate API call
     try {
       // In a real app, you would make an API call here
       console.log('Settings updated:', settings);
     } catch (error) {
-      dispatch({ type: 'LOAD_SETTINGS_ERROR', payload: 'Failed to update settings' });
+      dispatch({
+        type: 'LOAD_SETTINGS_ERROR',
+        payload: 'Failed to update settings',
+      });
     }
   };
 
@@ -155,7 +172,9 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, []);
 
   return (
-    <SettingsContext.Provider value={{ ...state, updateSettings, loadSettings }}>
+    <SettingsContext.Provider
+      value={{ ...state, updateSettings, loadSettings }}
+    >
       {children}
     </SettingsContext.Provider>
   );

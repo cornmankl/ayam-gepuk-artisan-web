@@ -20,7 +20,7 @@ const mockIntersectionObserver = vi.fn();
 mockIntersectionObserver.mockReturnValue({
   observe: () => null,
   unobserve: () => null,
-  disconnect: () => null
+  disconnect: () => null,
 });
 window.IntersectionObserver = mockIntersectionObserver;
 
@@ -52,7 +52,7 @@ const localStorageMock = (() => {
     },
     clear: () => {
       store = {};
-    }
+    },
   };
 })();
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
@@ -72,7 +72,7 @@ describe('Application Features Test', () => {
   it('has properly structured menu data', () => {
     expect(menuItems).toBeDefined();
     expect(menuItems.length).toBeGreaterThan(0);
-    
+
     // Check that each menu item has required properties
     menuItems.forEach(item => {
       expect(item).toHaveProperty('id');
@@ -91,7 +91,7 @@ describe('Application Features Test', () => {
         <OrderButton />
       </Router>
     );
-    
+
     // Check that the order button is rendered
     const orderButton = screen.getByRole('button', { name: /order/i });
     expect(orderButton).toBeInTheDocument();
@@ -104,7 +104,7 @@ describe('Application Features Test', () => {
         <AIAssistant />
       </Router>
     );
-    
+
     // Check that the AI assistant button is rendered
     const aiButton = screen.getByLabelText('Chat with AI Assistant');
     expect(aiButton).toBeInTheDocument();
@@ -115,7 +115,7 @@ describe('Application Features Test', () => {
     const TestComponent = () => {
       return <div data-testid="cart-test">Cart Test</div>;
     };
-    
+
     render(
       <Router>
         <CartProvider>
@@ -123,7 +123,7 @@ describe('Application Features Test', () => {
         </CartProvider>
       </Router>
     );
-    
+
     // If we get here without errors, the context provider is working
     expect(screen.getByTestId('cart-test')).toBeInTheDocument();
   });
@@ -133,7 +133,7 @@ describe('Application Features Test', () => {
     const TestComponent = () => {
       return <div data-testid="auth-test">Auth Test</div>;
     };
-    
+
     render(
       <Router>
         <AuthProvider>
@@ -141,7 +141,7 @@ describe('Application Features Test', () => {
         </AuthProvider>
       </Router>
     );
-    
+
     // If we get here without errors, the context provider is working
     expect(screen.getByTestId('auth-test')).toBeInTheDocument();
   });
@@ -151,7 +151,7 @@ describe('Application Features Test', () => {
     const TestComponent = () => {
       return <div data-testid="loyalty-test">Loyalty Test</div>;
     };
-    
+
     render(
       <Router>
         <LoyaltyProvider>
@@ -159,7 +159,7 @@ describe('Application Features Test', () => {
         </LoyaltyProvider>
       </Router>
     );
-    
+
     // If we get here without errors, the context provider is working
     expect(screen.getByTestId('loyalty-test')).toBeInTheDocument();
   });
@@ -169,7 +169,7 @@ describe('Application Features Test', () => {
     const TestComponent = () => {
       return <div data-testid="theme-test">Theme Test</div>;
     };
-    
+
     render(
       <Router>
         <ThemeProvider>
@@ -177,7 +177,7 @@ describe('Application Features Test', () => {
         </ThemeProvider>
       </Router>
     );
-    
+
     // If we get here without errors, the context provider is working
     expect(screen.getByTestId('theme-test')).toBeInTheDocument();
   });
@@ -187,7 +187,7 @@ describe('Application Features Test', () => {
     const TestComponent = () => {
       return <div data-testid="accessibility-test">Accessibility Test</div>;
     };
-    
+
     render(
       <Router>
         <AccessibilityProvider>
@@ -195,7 +195,7 @@ describe('Application Features Test', () => {
         </AccessibilityProvider>
       </Router>
     );
-    
+
     // If we get here without errors, the context provider is working
     expect(screen.getByTestId('accessibility-test')).toBeInTheDocument();
   });
@@ -234,26 +234,26 @@ describe('Application Features Test', () => {
     // Check that we have menu items in different categories
     const categories = ['krispy', 'klasik', 'side', 'drink'];
     const foundCategories: string[] = [];
-    
+
     menuItems.forEach(item => {
       // Validate category
       expect(categories).toContain(item.category);
       if (!foundCategories.includes(item.category)) {
         foundCategories.push(item.category);
       }
-      
+
       // Validate price
       expect(item.price).toBeGreaterThanOrEqual(0);
-      
+
       // Validate name
       expect(item.name).toBeTruthy();
       expect(item.name.length).toBeGreaterThan(0);
-      
+
       // Validate description
       expect(item.description).toBeTruthy();
       expect(item.description.length).toBeGreaterThan(0);
     });
-    
+
     // Check that we have items in all expected categories
     expect(foundCategories.length).toBeGreaterThan(0);
   });

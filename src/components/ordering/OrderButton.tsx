@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCartIcon, PhoneIcon, MessageCircleIcon, XIcon } from 'lucide-react';
+import {
+  ShoppingCartIcon,
+  PhoneIcon,
+  MessageCircleIcon,
+  XIcon,
+} from 'lucide-react';
 import { BUSINESS_INFO } from '../../constants/index';
 
 const OrderButton: React.FC = () => {
@@ -11,26 +16,27 @@ const OrderButton: React.FC = () => {
       icon: ShoppingCartIcon,
       title: 'Online Order',
       description: 'Order through our website',
-      action: () => window.location.href = '/menu',
+      action: () => (window.location.href = '/menu'),
       color: 'bg-red-600 hover:bg-red-700',
-      textColor: 'text-white'
+      textColor: 'text-white',
     },
     {
       icon: PhoneIcon,
       title: 'Call & Order',
       description: `Call ${BUSINESS_INFO.PHONE}`,
-      action: () => window.location.href = `tel:${BUSINESS_INFO.PHONE}`,
+      action: () => (window.location.href = `tel:${BUSINESS_INFO.PHONE}`),
       color: 'bg-green-600 hover:bg-green-700',
-      textColor: 'text-white'
+      textColor: 'text-white',
     },
     {
       icon: MessageCircleIcon,
       title: 'WhatsApp',
       description: 'Order via WhatsApp',
-      action: () => window.location.href = BUSINESS_INFO.SOCIAL_MEDIA.WHATSAPP,
+      action: () =>
+        (window.location.href = BUSINESS_INFO.SOCIAL_MEDIA.WHATSAPP),
       color: 'bg-green-500 hover:bg-green-600',
-      textColor: 'text-white'
-    }
+      textColor: 'text-white',
+    },
   ];
 
   return (
@@ -79,10 +85,12 @@ const OrderButton: React.FC = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-gray-900">How would you like to order?</h3>
+                <h3 className="text-xl font-bold text-gray-900">
+                  How would you like to order?
+                </h3>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -119,7 +127,8 @@ const OrderButton: React.FC = () => {
 
               <div className="mt-6 p-4 bg-yellow-50 rounded-xl">
                 <p className="text-sm text-gray-600 text-center">
-                  <strong>Quick Tip:</strong> Online orders get 10% off your first order!
+                  <strong>Quick Tip:</strong> Online orders get 10% off your
+                  first order!
                 </p>
               </div>
             </motion.div>

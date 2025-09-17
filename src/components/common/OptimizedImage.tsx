@@ -23,7 +23,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   priority = false,
   placeholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+',
   onLoad,
-  onError
+  onError,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
@@ -63,7 +63,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   // Generate optimized src with WebP support
   const getOptimizedSrc = () => {
     if (hasError) return placeholder;
-    
+
     // In production, you would use an image optimization service
     // For now, we'll use the original src
     return src;
@@ -118,7 +118,10 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       {/* WebP Support Detection */}
       {isInView && !hasError && (
         <picture>
-          <source srcSet={src.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+          <source
+            srcSet={src.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+            type="image/webp"
+          />
           <motion.img
             src={src}
             alt={alt}

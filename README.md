@@ -1,6 +1,24 @@
 # Ayam Gepuk Artisan - Authentic Indonesian Cuisine Website
 
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)
+![React](https://img.shields.io/badge/React-18.3-blue)
+![Vite](https://img.shields.io/badge/Vite-5.2-purple)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-blue)
+
 A modern, responsive website for Ayam Gepuk Artisan restaurant featuring authentic Indonesian cuisine with premium ingredients and traditional cooking methods.
+
+## 📸 Screenshots
+
+### Homepage
+![Homepage Screenshot](docs/screenshots/homepage.png)
+
+### Menu Page  
+![Menu Screenshot](docs/screenshots/menu.png)
+
+### Mobile Responsive
+![Mobile Screenshot](docs/screenshots/mobile.png)
 
 ## 🍗 Features
 
@@ -17,6 +35,9 @@ A modern, responsive website for Ayam Gepuk Artisan restaurant featuring authent
 - **Theme Switching** - Light/dark mode support
 - **Accessibility Features** - Screen reader support, keyboard navigation, high contrast mode
 - **Admin Settings System** - Comprehensive site configuration management
+- **404 Error Handling** - Custom error pages with navigation
+- **Admin Authentication** - Protected admin routes with rate limiting
+- **Code Quality** - Prettier formatting and pre-commit hooks
 
 ## 🚀 Tech Stack
 
@@ -25,6 +46,8 @@ A modern, responsive website for Ayam Gepuk Artisan restaurant featuring authent
 - **Animations**: Framer Motion
 - **Build Tool**: Vite
 - **Icons**: Lucide React
+- **Testing**: Vitest + Testing Library + Playwright
+- **Code Quality**: ESLint + Prettier + Husky
 - **Deployment**: Vercel
 
 ## 🎨 Design System
@@ -55,6 +78,9 @@ A modern, responsive website for Ayam Gepuk Artisan restaurant featuring authent
 # Clone repository
 git clone https://github.com/cornmankl/ayam-gepuk-artisan-web.git
 
+# Navigate to project
+cd ayam-gepuk-artisan-web
+
 # Install dependencies
 npm install
 
@@ -62,11 +88,71 @@ npm install
 npm run dev
 ```
 
+The development server will start at `http://localhost:5175`
+
+### Available Scripts
+
+```bash
+# Development
+npm run dev              # Start development server
+npm run dev:direct       # Start server on specific port
+
+# Building
+npm run build           # Build for production
+npm run preview         # Preview production build
+npm run build:analyze   # Analyze bundle size
+
+# Code Quality
+npm run lint           # Run ESLint with auto-fix
+npm run lint:check     # Check linting without fix
+npm run format         # Format code with Prettier
+npm run format:check   # Check formatting
+
+# Testing
+npm run test          # Run unit tests
+npm run test:ui       # Run tests with UI
+npm run test:e2e      # Run E2E tests
+npm run test:e2e-ui   # Run E2E tests with UI
+
+# Type Checking
+npm run type-check    # TypeScript type checking
+
+# Utilities
+npm run clean         # Clean build artifacts
+```
+
 ### Build for Production
 ```bash
 npm run build
 npm run preview
 ```
+
+## 🧪 Testing
+
+### Unit Tests
+The project uses Vitest for unit testing with comprehensive test coverage for components:
+
+```bash
+npm run test                    # Run all tests
+npm run test -- --watch        # Run tests in watch mode
+npm run test:ui                 # Run with Vitest UI
+```
+
+### E2E Tests
+End-to-end testing with Playwright:
+
+```bash
+npm run test:e2e               # Run E2E tests
+npm run test:e2e-ui            # Run with Playwright UI
+npx playwright install        # Install browser dependencies
+```
+
+### Test Coverage
+- ✅ Button component unit tests
+- ✅ Navigation flow E2E tests
+- ✅ Cart functionality tests
+- ✅ Mobile responsive tests
+- ✅ 404 error handling tests
 
 ## 🚀 Deployment
 
@@ -87,6 +173,85 @@ npm run build
 npx vercel --prod
 ```
 
+## 🔌 API Integration Examples
+
+### Context API Usage
+
+#### Cart Management
+```typescript
+import { useCart } from './context/CartContext';
+
+function MyComponent() {
+  const { cart, addToCart, removeFromCart, clearCart } = useCart();
+  
+  const handleAddItem = () => {
+    addToCart({
+      id: 'item-1',
+      name: 'Ayam Gepuk Original',
+      price: 25000,
+      quantity: 1
+    });
+  };
+  
+  return (
+    <div>
+      <p>Cart items: {cart.length}</p>
+      <button onClick={handleAddItem}>Add to Cart</button>
+    </div>
+  );
+}
+```
+
+#### Theme Management
+```typescript
+import { useTheme } from './context/ThemeContext';
+
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  
+  return (
+    <button onClick={toggleTheme}>
+      Current theme: {theme === 'dark' ? '🌙' : '☀️'}
+    </button>
+  );
+}
+```
+
+#### Authentication
+```typescript
+import { useAuth } from './context/AuthContext';
+
+function LoginButton() {
+  const { user, login, logout, isAuthenticated } = useAuth();
+  
+  return isAuthenticated ? (
+    <button onClick={logout}>Logout {user?.name}</button>
+  ) : (
+    <button onClick={login}>Login</button>
+  );
+}
+```
+
+### Component Usage Examples
+
+#### Reusable Button Component
+```typescript
+import { Button } from './components/common/Button';
+
+function OrderForm() {
+  return (
+    <div>
+      <Button variant="primary" size="lg" onClick={handleOrder}>
+        Order Now
+      </Button>
+      <Button variant="outline" size="md" isLoading={loading}>
+        Add to Cart
+      </Button>
+    </div>
+  );
+}
+```
+
 ## 📁 Project Structure
 
 ```
@@ -96,16 +261,13 @@ src/
 │   │   └── SettingsPanel.tsx # Site settings management interface
 │   ├── contexts/           # Admin context providers
 │   │   └── SettingsContext.tsx # Site settings context
-│   ├── hooks/              # Admin custom hooks
-│   ├── services/           # Admin services
-│   ├── utils/              # Admin utility functions
-│   ├── types/              # Admin type definitions
 │   ├── AdminDashboard.tsx  # Main admin dashboard
 │   └── adminRouter.tsx     # Admin routing configuration
 ├── components/              # Reusable components
 │   ├── accessibility/      # Accessibility features and provider
+│   ├── admin/              # Admin route protection
 │   ├── ai/                 # AI Assistant components
-│   ├── common/             # Common components (Loading, Error)
+│   ├── common/             # Common components (Button, Loading, Error)
 │   ├── layout/             # Layout components (Navbar, Footer)
 │   ├── logo/               # Logo and favicon components
 │   ├── mobile/             # Mobile-specific components
@@ -126,13 +288,91 @@ src/
 ├── data/                   # Static data (menu, locations, knowledge base)
 ├── pages/                  # Page components
 │   ├── admin/              # Admin dashboard and management pages
-│   │   ├── AdminDashboard.tsx       # Main admin dashboard
-│   │   ├── AnalyticsDashboard.tsx   # Business analytics
-│   │   ├── MenuManagement.tsx       # Menu item management
-│   │   ├── OutletsManagement.tsx    # Restaurant outlets management
-│   │   └── PromotionsManagement.tsx # Promotional offers management
 │   ├── AboutPage.tsx       # About the restaurant
 │   ├── CartPage.tsx        # Shopping cart
+│   ├── CheckoutPage.tsx    # Order checkout
+│   ├── ContactPage.tsx     # Contact information
+│   ├── HomePage.tsx        # Landing page
+│   ├── MenuPage.tsx        # Food menu
+│   ├── NotFoundPage.tsx    # 404 error page
+│   ├── PrivacyPolicy.tsx   # Privacy policy
+│   └── PromotionsPage.tsx  # Current promotions
+├── services/               # External services
+├── styles/                 # Global styles
+├── test/                   # Test utilities
+├── types/                  # TypeScript type definitions
+├── utils/                  # Utility functions
+├── App.tsx                 # Main app component
+├── Providers.tsx           # Context providers wrapper
+├── index.tsx               # Application entry point
+└── router.tsx              # Application routing
+```
+
+## 🔐 Security Features
+
+- **Content Security Policy (CSP)** - Prevents XSS attacks
+- **Admin Route Protection** - Authentication required for admin access
+- **Rate Limiting** - Protection against brute force attacks
+- **Audit Logging** - Authentication attempt logging
+- **Session Management** - Secure session handling
+- **Input Validation** - Form input sanitization
+
+## ♿ Accessibility Features
+
+- **WCAG 2.1 AA Compliance** - Web accessibility standards
+- **Keyboard Navigation** - Full keyboard support
+- **Screen Reader Support** - ARIA labels and descriptions
+- **High Contrast Mode** - Improved visibility option
+- **Focus Management** - Proper focus indicators
+- **Alternative Text** - Images with descriptive alt text
+
+## 🌟 Performance Optimizations
+
+- **Code Splitting** - Lazy-loaded route components
+- **Image Optimization** - Responsive images with proper formats
+- **Bundle Analysis** - Tree shaking and dead code elimination
+- **Caching Strategy** - Service worker for offline functionality
+- **Core Web Vitals** - Optimized for Google's performance metrics
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Follow TypeScript best practices
+- Write unit tests for new components
+- Update documentation for new features
+- Follow the existing code style (Prettier + ESLint)
+- Test across different devices and browsers
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
+**Ayam Gepuk Artisan**
+- 📱 Phone: [0182442017](tel:0182442017)
+- ✉️ Email: [info@ayamgepukartisan.com](mailto:info@ayamgepukartisan.com)
+- 📍 Location: Seremban 2, Negeri Sembilan, Malaysia
+- 🌐 Website: [ayamgepukartisan.com](https://ayamgepukartisan.com)
+
+## 🙏 Acknowledgments
+
+- React team for the amazing framework
+- Tailwind CSS for the utility-first CSS framework
+- Framer Motion for smooth animations
+- Vite for the blazing fast build tool
+- All contributors and testers
+
+---
+
+*Made with ❤️ for authentic Indonesian cuisine lovers*
 │   ├── CheckoutPage.tsx    # Order checkout
 │   ├── ContactPage.tsx     # Contact information
 │   ├── HomePage.tsx        # Homepage

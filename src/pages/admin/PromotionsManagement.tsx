@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  PlusIcon, 
-  EditIcon, 
-  TrashIcon, 
-  SearchIcon, 
+import {
+  PlusIcon,
+  EditIcon,
+  TrashIcon,
+  SearchIcon,
   FilterIcon,
   CalendarIcon,
   TagIcon,
@@ -14,7 +14,7 @@ import {
   XIcon,
   GiftIcon,
   PercentIcon,
-  ClockIcon
+  ClockIcon,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -45,7 +45,9 @@ const PromotionsManagement: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingPromotion, setEditingPromotion] = useState<Promotion | null>(null);
+  const [editingPromotion, setEditingPromotion] = useState<Promotion | null>(
+    null
+  );
   const [formData, setFormData] = useState<Partial<Promotion>>({});
 
   const categories = [
@@ -53,13 +55,13 @@ const PromotionsManagement: React.FC = () => {
     { id: 'food', name: 'Food' },
     { id: 'drink', name: 'Drinks' },
     { id: 'combo', name: 'Combos' },
-    { id: 'special', name: 'Special Offers' }
+    { id: 'special', name: 'Special Offers' },
   ];
 
   const discountTypes = [
     { id: 'percentage', name: 'Percentage', icon: PercentIcon },
     { id: 'fixed', name: 'Fixed Amount', icon: TagIcon },
-    { id: 'combo', name: 'Combo Deal', icon: GiftIcon }
+    { id: 'combo', name: 'Combo Deal', icon: GiftIcon },
   ];
 
   useEffect(() => {
@@ -71,49 +73,61 @@ const PromotionsManagement: React.FC = () => {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Mock data
       const mockPromotions: Promotion[] = [
         {
           id: 1,
           title: 'Weekend Family Feast',
-          description: 'Enjoy our special family bundle with 2 Ayam Gepuk Klasik, 2 Ayam Gepuk Krispy, 4 rice, and 4 drinks!',
+          description:
+            'Enjoy our special family bundle with 2 Ayam Gepuk Klasik, 2 Ayam Gepuk Krispy, 4 rice, and 4 drinks!',
           discountType: 'combo',
           discountValue: 20,
           validFrom: new Date('2023-10-20'),
           validUntil: new Date('2023-10-22'),
-          image: 'https://uploadthingy.s3.us-west-1.amazonaws.com/p5irPgQNgTn2ETzne3anjp/family-feast.jpg',
+          image:
+            'https://uploadthingy.s3.us-west-1.amazonaws.com/p5irPgQNgTn2ETzne3anjp/family-feast.jpg',
           category: 'combo',
           isActive: true,
-          terms: ['Valid on weekends only', 'Minimum 4 people', 'Cannot combine with other offers'],
+          terms: [
+            'Valid on weekends only',
+            'Minimum 4 people',
+            'Cannot combine with other offers',
+          ],
           minOrderAmount: 50,
           usageLimit: 100,
           usageCount: 25,
           applicableItems: [1, 2, 3, 4],
           createdAt: new Date('2023-10-15'),
-          updatedAt: new Date('2023-10-20')
+          updatedAt: new Date('2023-10-20'),
         },
         {
           id: 2,
           title: 'Spicy Monday Discount',
-          description: 'Get 15% off on all Ayam Gepuk Krispy orders every Monday!',
+          description:
+            'Get 15% off on all Ayam Gepuk Krispy orders every Monday!',
           discountType: 'percentage',
           discountValue: 15,
           validFrom: new Date('2023-10-01'),
           validUntil: new Date('2023-12-31'),
-          image: 'https://uploadthingy.s3.us-west-1.amazonaws.com/p5irPgQNgTn2ETzne3anjp/spicy-monday.jpg',
+          image:
+            'https://uploadthingy.s3.us-west-1.amazonaws.com/p5irPgQNgTn2ETzne3anjp/spicy-monday.jpg',
           category: 'food',
           isActive: true,
-          terms: ['Valid on Mondays only', 'Only for Ayam Gepuk Krispy', 'Maximum discount RM10'],
+          terms: [
+            'Valid on Mondays only',
+            'Only for Ayam Gepuk Krispy',
+            'Maximum discount RM10',
+          ],
           maxDiscount: 10,
           usageLimit: 200,
           usageCount: 45,
           applicableItems: [1],
           createdAt: new Date('2023-09-25'),
-          updatedAt: new Date('2023-10-20')
-        }
+          updatedAt: new Date('2023-10-20'),
+        },
       ];
-      
+
       setPromotions(mockPromotions);
     } catch (error) {
       console.error('Failed to fetch promotions:', error);
@@ -123,9 +137,11 @@ const PromotionsManagement: React.FC = () => {
   };
 
   const filteredPromotions = promotions.filter(promo => {
-    const matchesSearch = promo.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         promo.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || promo.category === selectedCategory;
+    const matchesSearch =
+      promo.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      promo.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === 'all' || promo.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -142,7 +158,7 @@ const PromotionsManagement: React.FC = () => {
       category: 'food',
       isActive: true,
       terms: [],
-      usageCount: 0
+      usageCount: 0,
     });
     setIsModalOpen(true);
   };
@@ -167,23 +183,25 @@ const PromotionsManagement: React.FC = () => {
   const handleSavePromotion = async () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       if (editingPromotion) {
-        setPromotions(prev => prev.map(promo => 
-          promo.id === editingPromotion.id 
-            ? { ...promo, ...formData, updatedAt: new Date() }
-            : promo
-        ));
+        setPromotions(prev =>
+          prev.map(promo =>
+            promo.id === editingPromotion.id
+              ? { ...promo, ...formData, updatedAt: new Date() }
+              : promo
+          )
+        );
       } else {
         const newPromotion: Promotion = {
-          ...formData as Promotion,
+          ...(formData as Promotion),
           id: Date.now(),
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
         };
         setPromotions(prev => [...prev, newPromotion]);
       }
-      
+
       setIsModalOpen(false);
       setEditingPromotion(null);
       setFormData({});
@@ -194,11 +212,13 @@ const PromotionsManagement: React.FC = () => {
 
   const toggleActive = async (id: number) => {
     try {
-      setPromotions(prev => prev.map(promo => 
-        promo.id === id 
-          ? { ...promo, isActive: !promo.isActive, updatedAt: new Date() }
-          : promo
-      ));
+      setPromotions(prev =>
+        prev.map(promo =>
+          promo.id === id
+            ? { ...promo, isActive: !promo.isActive, updatedAt: new Date() }
+            : promo
+        )
+      );
     } catch (error) {
       console.error('Failed to toggle promotion:', error);
     }
@@ -273,20 +293,26 @@ const PromotionsManagement: React.FC = () => {
         >
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1 relative">
-              <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <SearchIcon
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={20}
+              />
               <input
                 type="text"
                 placeholder="Search promotions..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={e => setSearchTerm(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
               />
             </div>
             <div className="relative">
-              <FilterIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <FilterIcon
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={20}
+              />
               <select
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={e => setSelectedCategory(e.target.value)}
                 className="pl-12 pr-8 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body appearance-none bg-white dark:bg-gray-700 text-brand-black dark:text-white"
               >
                 {categories.map(category => (
@@ -315,12 +341,12 @@ const PromotionsManagement: React.FC = () => {
                 transition={{
                   duration: 0.5,
                   delay: index * 0.1,
-                  ease: "easeOut"
+                  ease: 'easeOut',
                 }}
                 whileHover={{
                   y: -10,
                   scale: 1.02,
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
                 }}
                 layout
               >
@@ -331,22 +357,28 @@ const PromotionsManagement: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 flex gap-2">
-                    <div className={`px-3 py-1 rounded-full text-xs font-heading font-semibold text-white ${getStatusColor(promo)}`}>
+                    <div
+                      className={`px-3 py-1 rounded-full text-xs font-heading font-semibold text-white ${getStatusColor(promo)}`}
+                    >
                       {getStatusText(promo)}
                     </div>
                     <button
                       onClick={() => toggleActive(promo.id)}
                       className={`p-2 rounded-full transition-all duration-300 ${
-                        promo.isActive 
-                          ? 'bg-green-500 text-white hover:bg-green-600' 
+                        promo.isActive
+                          ? 'bg-green-500 text-white hover:bg-green-600'
                           : 'bg-red-500 text-white hover:bg-red-600'
                       }`}
                     >
-                      {promo.isActive ? <EyeIcon size={16} /> : <EyeOffIcon size={16} />}
+                      {promo.isActive ? (
+                        <EyeIcon size={16} />
+                      ) : (
+                        <EyeOffIcon size={16} />
+                      )}
                     </button>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-xl font-heading font-bold text-brand-black dark:text-white">
@@ -354,27 +386,36 @@ const PromotionsManagement: React.FC = () => {
                     </h3>
                     <div className="text-right">
                       <div className="flex items-center gap-1 mb-1">
-                        {promo.discountType === 'percentage' && <PercentIcon size={16} className="text-brand-red" />}
-                        {promo.discountType === 'fixed' && <TagIcon size={16} className="text-brand-red" />}
-                        {promo.discountType === 'combo' && <GiftIcon size={16} className="text-brand-red" />}
+                        {promo.discountType === 'percentage' && (
+                          <PercentIcon size={16} className="text-brand-red" />
+                        )}
+                        {promo.discountType === 'fixed' && (
+                          <TagIcon size={16} className="text-brand-red" />
+                        )}
+                        {promo.discountType === 'combo' && (
+                          <GiftIcon size={16} className="text-brand-red" />
+                        )}
                         <span className="text-lg font-heading font-bold text-brand-red">
-                          {promo.discountType === 'percentage' ? `${promo.discountValue}%` : 
-                           promo.discountType === 'fixed' ? `RM ${promo.discountValue}` : 
-                           `${promo.discountValue}% OFF`}
+                          {promo.discountType === 'percentage'
+                            ? `${promo.discountValue}%`
+                            : promo.discountType === 'fixed'
+                              ? `RM ${promo.discountValue}`
+                              : `${promo.discountValue}% OFF`}
                         </span>
                       </div>
                     </div>
                   </div>
-                  
+
                   <p className="text-brand-black/70 dark:text-gray-300 font-body mb-4 leading-relaxed">
                     {promo.description}
                   </p>
-                  
+
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-brand-black/60 dark:text-gray-400">
                       <CalendarIcon size={16} />
                       <span>
-                        {promo.validFrom.toLocaleDateString()} - {promo.validUntil.toLocaleDateString()}
+                        {promo.validFrom.toLocaleDateString()} -{' '}
+                        {promo.validUntil.toLocaleDateString()}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-brand-black/60 dark:text-gray-400">
@@ -384,7 +425,7 @@ const PromotionsManagement: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="flex gap-2">
                     <motion.button
                       onClick={() => handleEditPromotion(promo)}
@@ -425,11 +466,13 @@ const PromotionsManagement: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                onClick={(e) => e.stopPropagation()}
+                onClick={e => e.stopPropagation()}
               >
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-2xl font-heading font-bold text-brand-black dark:text-white">
-                    {editingPromotion ? 'Edit Promotion' : 'Create New Promotion'}
+                    {editingPromotion
+                      ? 'Edit Promotion'
+                      : 'Create New Promotion'}
                   </h2>
                   <button
                     onClick={() => setIsModalOpen(false)}
@@ -448,7 +491,12 @@ const PromotionsManagement: React.FC = () => {
                       <input
                         type="text"
                         value={formData.title || ''}
-                        onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+                        onChange={e =>
+                          setFormData(prev => ({
+                            ...prev,
+                            title: e.target.value,
+                          }))
+                        }
                         className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                         placeholder="Enter promotion title"
                       />
@@ -459,14 +507,21 @@ const PromotionsManagement: React.FC = () => {
                       </label>
                       <select
                         value={formData.category || 'food'}
-                        onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value as any }))}
+                        onChange={e =>
+                          setFormData(prev => ({
+                            ...prev,
+                            category: e.target.value as any,
+                          }))
+                        }
                         className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                       >
-                        {categories.filter(cat => cat.id !== 'all').map(category => (
-                          <option key={category.id} value={category.id}>
-                            {category.name}
-                          </option>
-                        ))}
+                        {categories
+                          .filter(cat => cat.id !== 'all')
+                          .map(category => (
+                            <option key={category.id} value={category.id}>
+                              {category.name}
+                            </option>
+                          ))}
                       </select>
                     </div>
                   </div>
@@ -477,7 +532,12 @@ const PromotionsManagement: React.FC = () => {
                     </label>
                     <textarea
                       value={formData.description || ''}
-                      onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                      onChange={e =>
+                        setFormData(prev => ({
+                          ...prev,
+                          description: e.target.value,
+                        }))
+                      }
                       rows={3}
                       className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                       placeholder="Enter promotion description"
@@ -491,7 +551,12 @@ const PromotionsManagement: React.FC = () => {
                       </label>
                       <select
                         value={formData.discountType || 'percentage'}
-                        onChange={(e) => setFormData(prev => ({ ...prev, discountType: e.target.value as any }))}
+                        onChange={e =>
+                          setFormData(prev => ({
+                            ...prev,
+                            discountType: e.target.value as any,
+                          }))
+                        }
                         className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                       >
                         {discountTypes.map(type => (
@@ -508,7 +573,12 @@ const PromotionsManagement: React.FC = () => {
                       <input
                         type="number"
                         value={formData.discountValue || 0}
-                        onChange={(e) => setFormData(prev => ({ ...prev, discountValue: parseFloat(e.target.value) }))}
+                        onChange={e =>
+                          setFormData(prev => ({
+                            ...prev,
+                            discountValue: parseFloat(e.target.value),
+                          }))
+                        }
                         className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                         placeholder="0"
                       />
@@ -522,8 +592,17 @@ const PromotionsManagement: React.FC = () => {
                       </label>
                       <input
                         type="date"
-                        value={formData.validFrom ? formData.validFrom.toISOString().split('T')[0] : ''}
-                        onChange={(e) => setFormData(prev => ({ ...prev, validFrom: new Date(e.target.value) }))}
+                        value={
+                          formData.validFrom
+                            ? formData.validFrom.toISOString().split('T')[0]
+                            : ''
+                        }
+                        onChange={e =>
+                          setFormData(prev => ({
+                            ...prev,
+                            validFrom: new Date(e.target.value),
+                          }))
+                        }
                         className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                       />
                     </div>
@@ -533,8 +612,17 @@ const PromotionsManagement: React.FC = () => {
                       </label>
                       <input
                         type="date"
-                        value={formData.validUntil ? formData.validUntil.toISOString().split('T')[0] : ''}
-                        onChange={(e) => setFormData(prev => ({ ...prev, validUntil: new Date(e.target.value) }))}
+                        value={
+                          formData.validUntil
+                            ? formData.validUntil.toISOString().split('T')[0]
+                            : ''
+                        }
+                        onChange={e =>
+                          setFormData(prev => ({
+                            ...prev,
+                            validUntil: new Date(e.target.value),
+                          }))
+                        }
                         className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                       />
                     </div>
@@ -547,7 +635,12 @@ const PromotionsManagement: React.FC = () => {
                     <input
                       type="url"
                       value={formData.image || ''}
-                      onChange={(e) => setFormData(prev => ({ ...prev, image: e.target.value }))}
+                      onChange={e =>
+                        setFormData(prev => ({
+                          ...prev,
+                          image: e.target.value,
+                        }))
+                      }
                       className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-yellow-gold focus:border-transparent transition-all duration-300 font-body bg-white dark:bg-gray-700 text-brand-black dark:text-white"
                       placeholder="https://example.com/image.jpg"
                     />
@@ -558,7 +651,12 @@ const PromotionsManagement: React.FC = () => {
                       <input
                         type="checkbox"
                         checked={formData.isActive !== false}
-                        onChange={(e) => setFormData(prev => ({ ...prev, isActive: e.target.checked }))}
+                        onChange={e =>
+                          setFormData(prev => ({
+                            ...prev,
+                            isActive: e.target.checked,
+                          }))
+                        }
                         className="w-4 h-4 text-yellow-gold bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-yellow-gold focus:ring-2"
                       />
                       <span className="text-sm font-body text-brand-black dark:text-white">

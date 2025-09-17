@@ -1,4 +1,3 @@
-
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { Layout } from './Layout';
@@ -8,9 +7,15 @@ import { MemoryRouter, Routes, Route } from 'react-router-dom';
 vi.mock('./Navbar', () => ({ default: () => <div>Navbar</div> }));
 vi.mock('./Footer', () => ({ default: () => <div>Footer</div> }));
 vi.mock('../ai/AIAssistant', () => ({ default: () => <div>AIAssistant</div> }));
-vi.mock('../ordering/OrderButton', () => ({ default: () => <div>OrderButton</div> }));
-vi.mock('../privacy/CookieConsent', () => ({ default: () => <div>CookieConsent</div> }));
-vi.mock('../../utils/performance', () => ({ PerformanceMonitor: () => <div>PerformanceMonitor</div> }));
+vi.mock('../ordering/OrderButton', () => ({
+  default: () => <div>OrderButton</div>,
+}));
+vi.mock('../privacy/CookieConsent', () => ({
+  default: () => <div>CookieConsent</div>,
+}));
+vi.mock('../../utils/performance', () => ({
+  PerformanceMonitor: () => <div>PerformanceMonitor</div>,
+}));
 
 describe('Layout', () => {
   it('renders Navbar, Footer, and Outlet content', () => {

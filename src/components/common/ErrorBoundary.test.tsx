@@ -1,6 +1,5 @@
-
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi, afterAll } from 'vitest';
 import ErrorBoundary from './ErrorBoundary';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -11,12 +10,13 @@ const ProblemChild = () => {
 
 describe('ErrorBoundary', () => {
   // Mock console.error to avoid polluting the test output
-  const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+  const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {
+    // Mock implementation for console.error
+  });
 
-  // Use cleanup function instead of afterAll
-  const cleanup = () => {
+  afterAll(() => {
     consoleErrorSpy.mockRestore();
-  };
+  });
 
   it('renders children when there is no error', () => {
     render(
@@ -40,7 +40,7 @@ describe('ErrorBoundary', () => {
   });
 
   it('allows the user to try again', () => {
-    // This test is a bit tricky because in a real scenario, 
+    // This test is a bit tricky because in a real scenario,
     // re-rendering the same broken component will just cause the error boundary to trigger again.
     // A more realistic test would involve a component that only throws an error once.
     // For this test, we'll just verify that the retry function resets the error state.
@@ -73,6 +73,8 @@ describe('ErrorBoundary', () => {
     );
 
     expect(screen.getByText('Custom Fallback')).toBeInTheDocument();
-    expect(screen.queryByText('Oops! Something went wrong')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('Oops! Something went wrong')
+    ).not.toBeInTheDocument();
   });
 });

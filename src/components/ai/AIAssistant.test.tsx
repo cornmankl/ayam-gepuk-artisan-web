@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import AIAssistant from './AIAssistant';
@@ -45,7 +44,11 @@ describe('AIAssistant', () => {
 
     // Check for bot's response
     await waitFor(() => {
-        expect(screen.getByText(/Our signature dishes include Ayam Krispy and Ayam Klasik/)).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          /Our signature dishes include Ayam Krispy and Ayam Klasik/
+        )
+      ).toBeInTheDocument();
     });
   });
 });

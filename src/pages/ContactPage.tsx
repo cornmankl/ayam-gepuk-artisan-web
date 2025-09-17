@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPinIcon, PhoneIcon, MailIcon, ClockIcon, SendIcon, MessageCircleIcon, NavigationIcon } from 'lucide-react';
+import {
+  MapPinIcon,
+  PhoneIcon,
+  MailIcon,
+  ClockIcon,
+  SendIcon,
+  MessageCircleIcon,
+  NavigationIcon,
+} from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -8,34 +16,38 @@ const ContactPage = () => {
     email: '',
     phone: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     // Reset form
     setFormData({
       name: '',
       email: '',
       phone: '',
       subject: '',
-      message: ''
+      message: '',
     });
-    
+
     setIsSubmitting(false);
     alert('Thank you for your message! We will get back to you soon.');
   };
@@ -43,42 +55,46 @@ const ContactPage = () => {
   const contactInfo = [
     {
       icon: MapPinIcon,
-      title: "Visit Us",
-      details: ["123 Jalan Seremban", "Seremban, Negeri Sembilan", "Malaysia"],
-      action: "Get Directions",
-      href: "https://maps.google.com"
+      title: 'Visit Us',
+      details: ['123 Jalan Seremban', 'Seremban, Negeri Sembilan', 'Malaysia'],
+      action: 'Get Directions',
+      href: 'https://maps.google.com',
     },
     {
       icon: PhoneIcon,
-      title: "Call Us",
-      details: ["+60 18-244 2017", "Mon-Sun: 10AM-10PM"],
-      action: "Call Now",
-      href: "tel:0182442017"
+      title: 'Call Us',
+      details: ['+60 18-244 2017', 'Mon-Sun: 10AM-10PM'],
+      action: 'Call Now',
+      href: 'tel:0182442017',
     },
     {
       icon: MailIcon,
-      title: "Email Us",
-      details: ["info@ayamgepukartisan.com", "orders@ayamgepukartisan.com"],
-      action: "Send Email",
-      href: "mailto:info@ayamgepukartisan.com"
+      title: 'Email Us',
+      details: ['info@ayamgepukartisan.com', 'orders@ayamgepukartisan.com'],
+      action: 'Send Email',
+      href: 'mailto:info@ayamgepukartisan.com',
     },
     {
       icon: ClockIcon,
-      title: "Opening Hours",
-      details: ["Monday - Sunday", "10:00 AM - 10:00 PM", "Last Order: 9:30 PM"],
-      action: "View Menu",
-      href: "/menu"
-    }
+      title: 'Opening Hours',
+      details: [
+        'Monday - Sunday',
+        '10:00 AM - 10:00 PM',
+        'Last Order: 9:30 PM',
+      ],
+      action: 'View Menu',
+      href: '/menu',
+    },
   ];
 
   const subjects = [
-    "General Inquiry",
-    "Order Inquiry",
-    "Catering Services",
-    "Feedback",
-    "Complaint",
-    "Partnership",
-    "Other"
+    'General Inquiry',
+    'Order Inquiry',
+    'Catering Services',
+    'Feedback',
+    'Complaint',
+    'Partnership',
+    'Other',
   ];
 
   return (
@@ -89,21 +105,21 @@ const ContactPage = () => {
           className="absolute top-0 left-0 w-full h-full bg-[url('https://uploadthingy.s3.us-west-1.amazonaws.com/p5irPgQNgTn2ETzne3anjp/ayamgepukartisanseremban2_%281%29.jpg')] opacity-10 bg-center bg-cover"
           animate={{
             scale: [1, 1.1, 1],
-            rotate: [0, 1, 0]
+            rotate: [0, 1, 0],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: 'easeInOut',
           }}
         />
-        
+
         <div className="container mx-auto relative z-10">
           <motion.div
             className="text-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.h1
               className="text-4xl md:text-6xl font-heading font-bold text-brand-black mb-6"
@@ -119,7 +135,8 @@ const ContactPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              We'd love to hear from you! Send us a message and we'll respond as soon as possible.
+              We'd love to hear from you! Send us a message and we'll respond as
+              soon as possible.
             </motion.p>
           </motion.div>
         </div>
@@ -190,7 +207,7 @@ const ContactPage = () => {
               <h2 className="text-3xl font-heading font-bold text-brand-black mb-6">
                 Send us a Message
               </h2>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -369,16 +386,26 @@ const ContactPage = () => {
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-yellow-gold/20 transition-colors group"
                     whileHover={{ x: 5 }}
                   >
-                    <PhoneIcon size={20} className="text-brand-red group-hover:scale-110 transition-transform" />
-                    <span className="font-body font-medium text-brand-black">+60 18-244 2017</span>
+                    <PhoneIcon
+                      size={20}
+                      className="text-brand-red group-hover:scale-110 transition-transform"
+                    />
+                    <span className="font-body font-medium text-brand-black">
+                      +60 18-244 2017
+                    </span>
                   </motion.a>
                   <motion.a
                     href="mailto:info@ayamgepukartisan.com"
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-yellow-gold/20 transition-colors group"
                     whileHover={{ x: 5 }}
                   >
-                    <MailIcon size={20} className="text-brand-red group-hover:scale-110 transition-transform" />
-                    <span className="font-body font-medium text-brand-black">info@ayamgepukartisan.com</span>
+                    <MailIcon
+                      size={20}
+                      className="text-brand-red group-hover:scale-110 transition-transform"
+                    />
+                    <span className="font-body font-medium text-brand-black">
+                      info@ayamgepukartisan.com
+                    </span>
                   </motion.a>
                   <motion.a
                     href="https://maps.google.com"
@@ -387,8 +414,13 @@ const ContactPage = () => {
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-yellow-gold/20 transition-colors group"
                     whileHover={{ x: 5 }}
                   >
-                    <NavigationIcon size={20} className="text-brand-red group-hover:scale-110 transition-transform" />
-                    <span className="font-body font-medium text-brand-black">Get Directions</span>
+                    <NavigationIcon
+                      size={20}
+                      className="text-brand-red group-hover:scale-110 transition-transform"
+                    />
+                    <span className="font-body font-medium text-brand-black">
+                      Get Directions
+                    </span>
                   </motion.a>
                 </div>
               </div>
